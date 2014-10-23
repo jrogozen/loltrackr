@@ -1,12 +1,28 @@
 <div class="row">
   <div class="small-12 columns">
     
-    call riot api
+    <h2>riot api calls</h2>
 
-    <input type="text" ng-model="champ.name"/>
+    <input type="text" ng-model="champ.name" placeholder="search champions..."/>
+
+    <div class="team" ng-init="team = []">
+      <h3>Picks</h3>
+      <ul class="small-block-grid-5">
+        <li ng-repeat="champ in team">
+          <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
+          <h4>{{champ.champ.name}}</h4>
+          {{champ.champ.tags}}
+          {{champ.champ.role}}
+        </li>
+      </ul>
+    </div>
+
+    <h3>Recommended Champions</h3>
+
+    <h3>All Champions</h3>
     <ul class="champions-container small-block-grid-12">
       <li ng-repeat="champ in champions | filter: champ.name">
-        <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
+        <img ng-click="addToTeam(champ)" src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
       </li>
     </ul>
 

@@ -11,7 +11,7 @@ class RiotapiController < ApplicationController
       local_champ = Champion.find_by(name: champ)
 
       if local_champ
-        response["data"][champ]["role"] = local_champ.role
+        response["data"][champ]["role"] = local_champ.role.split(";").map {|x| x.capitalize}
       end
 
       champions << {champ: data}
