@@ -1,0 +1,11 @@
+var app = angular.module("loltrackrApp", ['ngResource', 'ngRoute', 'ng-rails-csrf']);
+
+app.config(function($routeProvider){
+  $routeProvider
+
+  .when("/team-builder", {
+    templateUrl: "<%= asset_path('angular/templates/team-builder.html') %>",
+    controller: "TeamBuilderCntrl"
+  })
+
+})

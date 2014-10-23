@@ -1,0 +1,2 @@
+module RiotapiHelper
+end

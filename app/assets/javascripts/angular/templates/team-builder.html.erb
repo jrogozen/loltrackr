@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="small-12 columns">
+    
+    call riot api
+
+    <input type="text" ng-model="champ.name"/>
+    <ul class="champions-container small-block-grid-12">
+      <li ng-repeat="champ in champions | filter: champ.name">
+        <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
+      </li>
+    </ul>
+
+  </div>
+</div>
