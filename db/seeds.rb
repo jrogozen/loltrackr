@@ -14,7 +14,7 @@
   Champion.create({name: "Annie", role: "pick"}) 
   Champion.create({name: "Ashe", role: "pick"}) 
   Champion.create({name: 'Aatrox', role: 'poke;engage'})
-  Champion.create({name: "Blitzcrank", role: " "}) 
+  Champion.create({name: "Blitzcrank", role: "pick;protect"}) 
   Champion.create({name: "Brand", role: "poke;aoe"}) 
   Champion.create({name: "Caitlyn", role: "poke;push;protect"}) 
   Champion.create({name: "Cassiopeia", role: "poke;aoe"}) 
