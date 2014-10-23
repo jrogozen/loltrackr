@@ -10,9 +10,11 @@
       <ul class="small-block-grid-5">
         <li ng-repeat="champ in team">
           <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
-          <h4>{{champ.champ.name}}</h4>
-          {{champ.champ.tags}}
-          {{champ.champ.role}}
+          <div class="info">
+            <h4>{{champ.champ.name}}</h4>
+            <p>Tags: {{champ.champ.tags.join(', ')}}</p>
+            <p>Role: {{champ.champ.role.join(', ')}}</p>
+          </div>
         </li>
       </ul>
     </div>
