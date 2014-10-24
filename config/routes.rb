@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get "riotapi/champions" => "riotapi#get_champions"
+  get "riotapi/role" => "riotapi#get_role"
 
   resources :champions
   

@@ -18,6 +18,7 @@
 //= require angular-route
 //= require angular-resource
 //= require ng-rails-csrf
+//= require underscore
 //= require ./angular/app
 //= require_tree ./angular/models
 //= require_tree ./angular/controllers

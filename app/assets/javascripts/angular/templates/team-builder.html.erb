@@ -3,31 +3,40 @@
     
     <h2>riot api calls</h2>
 
-
     <input type="text" ng-model="champ.name" placeholder="search champions..."/>
 
     <div class="team" ng-init="team = []">
       <h3>Picks</h3>
       <ul class="small-block-grid-5">
         <li ng-repeat="champ in team">
-          <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
+          <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.image.full}}">
           <div class="info">
             <h4>{{champ.champ.name}}</h4>
-            <p>Tags: {{champ.champ.tags.join(', ')}}</p>
-            <p>Role: {{champ.champ.role.join(', ')}}</p>
+            <p>Tags: {{champ.tags.join(', ')}}</p>
+            <p>Role: {{champ.role.join(', ')}}</p>
           </div>
         </li>
       </ul>
     </div>
 
-    <h3>Recommended Champions</h3>
+    <div ng-show="showChampions">
+      <div ng-show="showSuggestions">
+        <h3>Recommended Champions For {{role.charAt(0).toUpperCase() + role.slice(1)}} Composition</h3>
 
-    <h3>All Champions</h3>
-    <ul class="champions-container small-block-grid-12">
-      <li ng-repeat="champ in champions | filter: champ.name">
-        <img ng-click="addToTeam(champ)" src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.champ.image.full}}">
-      </li>
-    </ul>
+        <ul class="filtered-champions-container small-block-grid-12">
+          <li ng-repeat="champ in filteredChampions | filter: champ.name">
+            <img ng-click="addToTeam(champ)" ng-src="{{imageUrl}}{{champ.image.full}}">
+          </li>
+        </ul>
+      </div>
+
+      <h3>All Champions</h3>
+      <ul class="champions-container small-block-grid-12">
+        <li ng-repeat="champ in champions | filter: champ.name">
+          <img ng-click="addToTeam(champ)" ng-src="{{imageUrl}}{{champ.image.full}}">
+        </li>
+      </ul>
+    </div>
 
   </div>
 </div>
