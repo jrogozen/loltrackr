@@ -1,0 +1,10 @@
+notes.rb
+
+## to do ##
+
+display stats after team is made
+  - total team stats (ad, ap, defense, health)
+  - team composition %'s (50% poke, 75% aoe, 20% protect ) : radio graph
+  - recommended items based on composition (%80 aoe, suggest mathematically strong team fight items for ap, ad, misc)
+ability to remove champions from list
+hover stats for champions

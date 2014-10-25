@@ -8,7 +8,6 @@ app.factory('RiotApi', ['$resource', '$http', '$timeout',
         // }
       }),
       getRole: function(role) {
-        console.log('get role');
         return $resource('riotapi/role/?q=' + role, {}, {
         })
       }

@@ -1,12 +1,12 @@
 class RiotapiController < ApplicationController
 
   def get_champions
-    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags&api_key=' + @riot_key)
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags,stats&api_key=' + @riot_key)
 
     champions = []
 
     response["data"].each do |champ, data|
-      local_champ = Champion.find_by(name: champ)
+      local_champ = Champion.find_by(name: data["name"])
 
       if local_champ
         response["data"][champ]["role"] = local_champ.role.split(";").map {|x| x.capitalize}
@@ -20,13 +20,13 @@ class RiotapiController < ApplicationController
   end
 
   def get_role
-    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags&api_key=' + @riot_key)
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags,stats&api_key=' + @riot_key)
 
     selected_champions = []
 
     response["data"].each do |champ, data|
 
-      local_champ = Champion.where('role LIKE?', '%' + params["q"] + '%').find_by(name: champ)
+      local_champ = Champion.where('role LIKE?', '%' + params["q"] + '%').find_by(name: data["name"])
 
       if local_champ
         response["data"][champ]["role"] = local_champ.role.split(";")

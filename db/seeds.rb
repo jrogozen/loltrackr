@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # [poke, aoe, pick, protect, push]
 
+  Champion.create({name: "Ahri", role: "pick;poke"}) 
   Champion.create({name: "Akali", role: "pick"}) 
   Champion.create({name: "Alistar", role: "protect;aoe"}) 
   Champion.create({name: "Amumu", role: "aoe"}) 
