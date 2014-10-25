@@ -36,21 +36,18 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
       };
 
       _.each($scope.team, function(champ) {
-        teamStats["attack"] = teamStats["attack"] + ((champ["stats"]["attackdamage"] + (champ["stats"]["attackdamageperlevel"] * 18)) + (champ["stats"]["attackspeedoffset"] + (champ["stats"]["attackspeedperlevel"] * 18)) + (champ["stats"]["mp"] + (champ["stats"]["mpperlevel"] * 18)));
+        teamStats["attack"] = teamStats["attack"] + ((champ["stats"]["attackdamage"] + (champ["stats"]["attackdamageperlevel"] * 18)) + (champ["stats"]["attackspeedoffset"] + (champ["stats"]["attackspeedperlevel"] * 18)) + (champ["stats"]["mp"] + (champ["stats"]["mpperlevel"] * 18))) * 2.3;
         teamStats["defense"] = teamStats["defense"] + ((champ["stats"]["armor"] + (champ["stats"]["armorperlevel"] * 18)) + (champ["stats"]["hp"] + (champ["stats"]["hpperlevel"] * 18)) + (champ["stats"]["spellblock"] + (champ["stats"]["spellblockperlevel"] * 18)));
 
         var tags = _.sortBy(champ["tags"], function(tag) {
           return tag;
         });
 
-        _.all(tags, function(tag) {
-          if (tag === "Mage") {
-            teamStats["ap"] ++;
-          } else {
-            teamStats["ad"] ++;
-          }
-          return;
-        });
+        if (_.contains(champ["tags"], "Mage")) {
+          teamStats["ap"] ++;
+        } else {
+          teamStats["ad"] ++;
+        }
 
       });
 

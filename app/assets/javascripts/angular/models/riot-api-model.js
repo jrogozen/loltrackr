@@ -7,10 +7,10 @@ app.factory('RiotApi', ['$resource', '$http', '$timeout',
         //   isArray: false
         // }
       }),
-      getRole: function(role) {
-        return $resource('riotapi/role/?q=' + role, {}, {
-        })
-      }
+      // getRole: function(role) {
+      //   return $resource('riotapi/role/?q=' + role, {}, {
+      //   })
+      // }
     }
 
 }]);
