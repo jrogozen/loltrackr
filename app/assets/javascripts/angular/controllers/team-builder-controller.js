@@ -49,36 +49,11 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
         name: null
       }
 
-      if ($scope.team.length < 5) {
-        $scope.team.push(champ);
+      Team.addTeam($scope.team, $scope.champions, $scope.filteredChampions, champ);
 
-        // delete from champions array
-        for (var i = 0; i < $scope.champions.length; i++) {
-          if ($scope.champions[i]) {
-            if ($scope.champions[i].key === champ.key) {
-              $scope.champions.splice(i, 1);
-              break;
-            }
-          }
-        }
-
-        // delete from filtered array
-        if ($scope.filteredChampions) {
-          for (var i = 0; i < $scope.filteredChampions.length; i++) {
-            if ($scope.filteredChampions[i]) {
-              if ($scope.filteredChampions[i].key === champ.key) {
-               
-                $scope.filteredChampions.splice(i, 1);
-              
-                break;
-              }
-            }
-          }
-        }
-        $scope.showTeam = true;
-        checkTeamLength();
-        $scope.calculateTeamComp($scope.team);
-      } 
+      $scope.showTeam = true;
+      checkTeamLength();
+      $scope.calculateTeamComp($scope.team);
     };
 
     $scope.calculateTeamComp = function(team) {

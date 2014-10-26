@@ -64,6 +64,33 @@ app.factory('Team', ['$resource', '$http', '$timeout',
         }
        });
        return _.max(team_comp, function(comp){ return comp.count; });
+      },
+      addTeam: function(team, champions, filtered, champ) {
+        if (team.length < 5) {
+          team.push(champ);
+
+          // delete from champions array
+          for (var i = 0; i < champions.length; i++) {
+            if (champions[i]) {
+              if (champions[i].key === champ.key) {
+                champions.splice(i, 1);
+                break;
+              }
+            }
+          }
+
+          // delete from filtered array
+          if (filtered) {
+            for (var i = 0; i < filtered.length; i++) {
+              if (filtered[i]) {
+                if (filtered[i].key === champ.key) {
+                  filtered.splice(i, 1);
+                  break;
+                }
+              }
+            }
+          }
+        }
       }
 
 
