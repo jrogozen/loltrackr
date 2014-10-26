@@ -1,0 +1,41 @@
+body {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+  }
+  p, a, input {
+    font-family: 'Roboto', sans-serif;
+  }
+  a {
+    color: $link;
+    &:hover {
+      color: $link;
+      text-decoration: underline;
+    }
+  }
+}
+
+#search-champions {
+  font-size: 56px;
+  color: $link;
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: $link;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $link;
+    opacity: 1;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $link;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: $link;
+  }
+
+}
+
+.team {
+  h4 {
+    color: white;
+  }
+}

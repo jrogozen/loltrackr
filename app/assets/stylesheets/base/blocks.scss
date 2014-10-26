@@ -1,0 +1,15 @@
+#main {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.button, button {
+  background: white;
+  border: 2px solid $highlight;
+  border-radius: 5px !important;
+  color: $highlight;
+  &:hover {
+    background: $highlight;
+    color: white;
+  }
+}

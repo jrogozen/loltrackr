@@ -1,5 +1,5 @@
-app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routeParams', 'RiotApi',
-  function($scope, $location, $timeout, $routeParams, RiotApi) {
+app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routeParams', 'RiotApi', 'Team',
+  function($scope, $location, $timeout, $routeParams, RiotApi, Team) {
 
     $scope.imageUrl = "http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/";
 
@@ -9,11 +9,18 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
 
     $scope.showChampions = true;
 
+    $scope.showTeam = false;
+
+    $scope.showCompleteTeam = false;
+
+    $scope.showUrl = false;
+
+    $scope.url = "";
+
     var filterList = function(role) {
       $scope.filteredChampions = []
       _.each($scope.champions, function(champ) {
         if (_.contains(champ.role, role)) {
-
           $scope.filteredChampions.push(champ);
         }
       })
@@ -22,6 +29,7 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
     var checkTeamLength = function() {
       if ($scope.team.length >= 5) {
         $scope.showChampions = false;
+        $scope.showCompleteTeam = true;
       }
     }
 
@@ -36,16 +44,17 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
       };
 
       _.each($scope.team, function(champ) {
-        teamStats["attack"] = teamStats["attack"] + ((champ["stats"]["attackdamage"] + (champ["stats"]["attackdamageperlevel"] * 18)) + (champ["stats"]["attackspeedoffset"] + (champ["stats"]["attackspeedperlevel"] * 18)) + (champ["stats"]["mp"] + (champ["stats"]["mpperlevel"] * 18))) * 2.3;
+        teamStats["attack"] = teamStats["attack"] + ((champ["stats"]["attackdamage"] + (champ["stats"]["attackdamageperlevel"] * 18)) + (champ["stats"]["attackspeedoffset"] + (champ["stats"]["attackspeedperlevel"] * 18)) + (champ["stats"]["mp"] + (champ["stats"]["mpperlevel"] * 18))) * 2.5;
         teamStats["defense"] = teamStats["defense"] + ((champ["stats"]["armor"] + (champ["stats"]["armorperlevel"] * 18)) + (champ["stats"]["hp"] + (champ["stats"]["hpperlevel"] * 18)) + (champ["stats"]["spellblock"] + (champ["stats"]["spellblockperlevel"] * 18)));
 
         var tags = _.sortBy(champ["tags"], function(tag) {
           return tag;
         });
 
-        if (_.contains(champ["tags"], "Mage")) {
+        if (_.contains(tags, "Mage") && !(_.contains(tags, "Marksman"))) {
           teamStats["ap"] ++;
         } else {
+          // console.log('not mage found!');
           teamStats["ad"] ++;
         }
 
@@ -53,6 +62,14 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
 
       $scope.teamStats = teamStats;
     }
+
+    $scope.saveTeam = function(teamData) {
+      Team.saveTeam.save({team: teamData, stats: $scope.teamStats}, function(data) {
+        // console.log(data);
+        $scope.url = data.urlhash;
+        $scope.showUrl = true;
+      });
+    };
 
     $scope.addToTeam = function(champ) {
       $scope.champ = {
@@ -77,17 +94,15 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
           for (var i = 0; i < $scope.filteredChampions.length; i++) {
             if ($scope.filteredChampions[i]) {
               if ($scope.filteredChampions[i].key === champ.key) {
-                console.log($scope.filteredChampions[i]);
-                console.log($scope.filteredChampions.length);
+               
                 $scope.filteredChampions.splice(i, 1);
-                console.log($scope.filteredChampions.length);
-
+              
                 break;
               }
             }
           }
         }
-
+        $scope.showTeam = true;
         checkTeamLength();
         $scope.calculateTeamComp();
       } 
