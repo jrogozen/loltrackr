@@ -1,9 +1,13 @@
 $box: #E9F2F9;
 $highlight: #F26C4F;
 $link: #F26C4F;
+$top-bar: #130501;
 $light-header-text: #9CC4E4;
-$light-text: #E9F2F9;
+$light-text: #e57f4f;
+$logo: #f25057;
+$light-highlight: #f25550;
 
 @import "base/fonts.scss";
 @import "base/blocks.scss";
+@import "base/header.scss";
 @import "styles/team-builder.scss";

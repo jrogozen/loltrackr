@@ -1,8 +1,6 @@
 <div class="row">
   <div class="small-12 columns">
     
-    <!-- {{team}} -->
-
     <input id="search-champions" onfocus="this.placeholder = ''" onblur="this.placeholder = 'search champions...'" ng-show="showChampions" type="text" ng-model="champ.name" placeholder="search champions..."/>
 
     <div ng-show="showTeam">
@@ -86,11 +84,11 @@
         <div class="row collapse">
           <div class="medium-3 columns end">
             <form ng-submit="saveTeam(team)">
-              <input type="submit" class="button" value="save team">
+              <input ng-hide="showUrl" type="submit" class="button" value="save team">
             </form> 
           </div>
           <div ng-show="showUrl" class="small-12 columns">
-            <h2><a ng-href="/teams/{{url}}">http://loltrackr.com/teams/{{url}}</a></h2>
+            <h2><a ng-href="/#/team-builder/{{url}}">http://loltrackr.com/#/team-builder/{{url}}</a></h2>
           </div>
         </div>
 

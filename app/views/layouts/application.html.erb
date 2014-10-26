@@ -12,11 +12,36 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body ng-app="loltrackrApp">
+    <header id="header">
+      <nav class="top">
+        <div class="logo">
+          loltrackr
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a ng-href="#/">home</a></li>
+            <li><a ng-href="#/team-builder">create team</a></li>
+            <li><a ng-href="#/team-builder/stats">stats</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
     <div id="main">
       <%= yield %>
     </div>
+
+    <footer>
+      <nav class="contact">
+        <div class="menu">
+          <ul>
+            <li><a target="_blank" href="http://www.twitter.com/jonrogozen">twitter</a></li>
+            <li><a target="_blank" href="https://github.com/jrogozen">github</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
     <%= javascript_include_tag "application" %>
 
   </body>
