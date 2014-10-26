@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="small-12 columns">
+
+{{team}}
+    <div class="team-stats">
+        <h4>Team Stats</h4>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Offense</th>
+              <th>Defense</th>
+              <th>Offensive Difference</th>
+              <th>Defensive Difference</th>
+              <th>AP</th>
+              <th>AD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{teamStats.attack.toFixed(0)}} points</td>
+              <td>{{teamStats.defense.toFixed(0)}} points</td>
+              <td>{{(teamStats.attack - teamStats.defense).toFixed(0)}} points more offensive</td>
+              <td>{{(teamStats.defense - teamStats.attack).toFixed(0)}} points more defensive</td>
+              <td>{{((teamStats.ap / team.length) * 100).toFixed(0)}}%</td>
+              <td>{{((teamStats.ad / team.length) * 100).toFixed(0)}}%</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+
+  </div>
+</div>
+
+<div class="team" ng-init="team = []">
+
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="small-block-grid-5">
+          <li ng-repeat="champ in team">
+            <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.image.full}}">
+            <div class="info">
+              <h4>{{champ.name}}</h4>
+              <p>Tags: {{champ.tags.join(', ')}}</p>
+              <p>Role: {{champ.role.join(', ')}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>

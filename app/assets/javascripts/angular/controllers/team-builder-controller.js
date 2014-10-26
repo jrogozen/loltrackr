@@ -33,39 +33,12 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
       }
     }
 
-    var calculateTeamStats = function() {
-      var teamStats = {
-        attack: 0,
-        //attack + crit + attackspeed
-        defense: 0,
-        ap: 0,
-        ad: 0
-        //spellblock + armor + health
-      };
-
-      _.each($scope.team, function(champ) {
-        teamStats["attack"] = teamStats["attack"] + ((champ["stats"]["attackdamage"] + (champ["stats"]["attackdamageperlevel"] * 18)) + (champ["stats"]["attackspeedoffset"] + (champ["stats"]["attackspeedperlevel"] * 18)) + (champ["stats"]["mp"] + (champ["stats"]["mpperlevel"] * 18))) * 2.5;
-        teamStats["defense"] = teamStats["defense"] + ((champ["stats"]["armor"] + (champ["stats"]["armorperlevel"] * 18)) + (champ["stats"]["hp"] + (champ["stats"]["hpperlevel"] * 18)) + (champ["stats"]["spellblock"] + (champ["stats"]["spellblockperlevel"] * 18)));
-
-        var tags = _.sortBy(champ["tags"], function(tag) {
-          return tag;
-        });
-
-        if (_.contains(tags, "Mage") && !(_.contains(tags, "Marksman"))) {
-          teamStats["ap"] ++;
-        } else {
-          // console.log('not mage found!');
-          teamStats["ad"] ++;
-        }
-
-      });
-
-      $scope.teamStats = teamStats;
+    var calculateTeamStats = function(team) {
+      $scope.teamStats = Team.calculateStats(team);
     }
 
     $scope.saveTeam = function(teamData) {
-      Team.saveTeam.save({team: teamData, stats: $scope.teamStats}, function(data) {
-        // console.log(data);
+      Team.team.save({team: teamData, stats: $scope.teamStats}, function(data) {
         $scope.url = data.urlhash;
         $scope.showUrl = true;
       });
@@ -104,58 +77,16 @@ app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routePa
         }
         $scope.showTeam = true;
         checkTeamLength();
-        $scope.calculateTeamComp();
+        $scope.calculateTeamComp($scope.team);
       } 
     };
 
-    $scope.calculateTeamComp = function() {
-
-      var team_comp = [
-        {name: "poke", count: 0}, 
-        {name: "aoe", count: 0}, 
-        {name: "pick", count: 0}, 
-        {name: "engage", count: 0}, 
-        {name: "protect", count: 0}, 
-        {name: "push", count: 0}
-      ];
-
-      $.each($scope.team, function( index, value ) {
-        if (value.role) {
-          $.each(value.role, function( i, v ) {
-            if (v === 'Poke') {
-              team_comp[0]["count"] ++;
-            } else if (v === 'Aoe') {
-              team_comp[1]["count"] ++;
-            } else if (v === 'Pick') {
-              team_comp[2]["count"] ++;
-            } else if (v === 'Engage') {
-              team_comp[3]["count"] ++;
-            } else if (v === 'Protect') {
-              team_comp[4]["count"] ++;
-            } else if (v === 'Push') {
-              team_comp[5]["count"] ++;
-            }
-          });
-        }
-      
-        var selected_role = _.max(team_comp, function(comp){ return comp.count; });
-
-        $scope.role = selected_role.name;
-
-        filterList($scope.role.charAt(0).toUpperCase() + $scope.role.slice(1));
-        // $scope.filteredChampions = RiotApi.getRole($scope.role).query();
-
-        $scope.showSuggestions = true;
-
-        calculateTeamStats();
-
-      });
+    $scope.calculateTeamComp = function(team) {
+      $scope.role = Team.calculateComp(team).name;
+      filterList($scope.role.charAt(0).toUpperCase() + $scope.role.slice(1));
+      $scope.showSuggestions = true;
+      calculateTeamStats($scope.team);
     };
-
-  
-
-
-
 
   }
 ]);

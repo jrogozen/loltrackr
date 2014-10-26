@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
 
     team_object["info"] = t
     team_object["champions"] = t.champions
-    
+    binding.pry
     render json: team_object
   end
 
