@@ -8,6 +8,7 @@ body {
   }
   a {
     color: $link;
+    transition: color ease-in-out 0.5s;
     &:hover {
       color: $link;
       text-decoration: underline;
@@ -18,7 +19,7 @@ body {
 .top, .contact {
   color: white;
   .logo {
-    color: $logo;
+    // color: $logo;
     font-size: 24px;
   }
   a {
