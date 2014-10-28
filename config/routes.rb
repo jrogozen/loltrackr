@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get "riotapi/champions" => "riotapi#get_champions"
   get "riotapi/role" => "riotapi#get_role"
+  get "teams/max-attack" => "teams#max_attack"
+  get "teams/max-defense" => "teams#max_defense"
 
   resources :champions
   resources :teams

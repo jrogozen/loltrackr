@@ -7,9 +7,16 @@ app.config(function($routeProvider){
     templateUrl: "<%= asset_path('angular/templates/team-builder.html') %>",
     controller: "TeamBuilderCntrl"
   })
+  .when("/team-builder/stats", {
+    templateUrl: "<%= asset_path('angular/templates/team-builder-stats.html') %>",
+    controller: "TeamStatsCntrl"
+  })
   .when("/team-builder/:id", {
     templateUrl: "<%= asset_path('angular/templates/team.html') %>",
     controller: "TeamViewCntrl"
+  })
+  .otherwise({
+    redirectTo: "/team-builder"
   })
 
 })

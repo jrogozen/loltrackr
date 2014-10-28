@@ -1,7 +1,7 @@
 class RiotapiController < ApplicationController
 
   def get_champions
-    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags,stats&api_key=' + @riot_key)
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,info,tags,stats&api_key=' + @riot_key)
 
     champions = []
 
@@ -20,7 +20,7 @@ class RiotapiController < ApplicationController
   end
 
   def get_role
-    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags,stats&api_key=' + @riot_key)
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,info,tags,stats&api_key=' + @riot_key)
 
     selected_champions = []
 

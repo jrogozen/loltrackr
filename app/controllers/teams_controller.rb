@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
 
     response["data"].each do |champ, data|
 
-      local_champ = t.champions.find_by(name: champ)
+      local_champ = t.champions.find_by(name: data["name"])
 
       if local_champ
         response["data"][champ]["role"] = local_champ.role.split(";").map {|x| x.capitalize}
@@ -47,4 +47,59 @@ class TeamsController < ApplicationController
 
     render json: t
   end
+
+  def max_attack
+    team_object = {}
+
+    t = Team.order("attack DESC").first
+
+    team_object["info"] = t
+
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags,stats&api_key=' + @riot_key)
+
+    champions = []
+
+    response["data"].each do |champ, data|
+
+      local_champ = t.champions.find_by(name: data["name"])
+
+      if local_champ
+        response["data"][champ]["role"] = local_champ.role.split(";").map {|x| x.capitalize}
+        champions << data
+      end
+
+    end
+
+    team_object["champions"] = champions
+
+    render json: team_object
+  end
+
+  def max_defense
+    team_object = {}
+
+    t = Team.order("defense DESC").first
+
+    team_object["info"] = t
+
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,tags,stats&api_key=' + @riot_key)
+
+    champions = []
+
+    response["data"].each do |champ, data|
+
+      local_champ = t.champions.find_by(name: data["name"])
+
+      if local_champ
+        response["data"][champ]["role"] = local_champ.role.split(";").map {|x| x.capitalize}
+        champions << data
+      end
+
+    end
+
+    team_object["champions"] = champions
+
+    render json: team_object
+  end
+
 end
