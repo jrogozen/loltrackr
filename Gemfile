@@ -40,7 +40,7 @@ gem 'spring',        group: :development
 
 gem 'angularjs-rails'
 gem 'foundation-rails'
-gem 'pry-byebug'
+gem 'pry-byebug', group: :development
 gem 'ng-rails-csrf'
 gem 'figaro'
 gem 'httparty'
