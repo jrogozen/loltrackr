@@ -45,3 +45,5 @@ gem 'ng-rails-csrf'
 gem 'figaro'
 gem 'httparty'
 gem 'underscore-rails'
+
+gem 'rails_12factor', group: :production
