@@ -1,5 +1,4 @@
-app.factory('TeamStats', ['$resource', '$http', '$timeout', 
-  function($resource, $http, $timeout) {
+app.factory('TeamStats', ['$resource', '$http', '$timeout', function($resource, $http, $timeout) {
 
     return {
       getStats: $resource('teams/', {}, {

@@ -1,5 +1,4 @@
-app.factory('Team', ['$resource', '$http', '$timeout', 
-  function($resource, $http, $timeout) {
+app.factory('Team', ['$resource', '$http', '$timeout', function($resource, $http, $timeout) {
 
     return { 
       team: $resource('teams/:id', {id: '@id'}, {
