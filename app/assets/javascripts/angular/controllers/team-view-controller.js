@@ -4,8 +4,6 @@ app.controller('TeamViewCntrl', ['$scope', '$location', '$timeout', '$routeParam
       $scope.team = data["champions"];
       $scope.teamStats = data["info"];
     });
-    
-    
 
   }
 ])
