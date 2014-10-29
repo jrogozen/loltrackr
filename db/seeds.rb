@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # [poke, aoe, pick, protect, push]
 
+Category.create({name: "Clip"});
+Category.create({name: "Full Game"});
+Category.create({name: "Interview"});
+
 Champion.create({name: "Aatrox", role: "push"})
 Champion.create({name: "Ahri", role: "pick"})
 Champion.create({name: "Akali", role: "pick"})

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def load_vars
     @riot_key = ENV["riot_key"]
+    @youtube_key = ENV["youtube_key"]
   end
 
 end
