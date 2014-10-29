@@ -43,7 +43,7 @@
       <div class="small-12 columns">
         <ul class="small-block-grid-5">
           <li ng-repeat="champ in team">
-            <img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/{{champ.image.full}}">
+            <img ng-src="{{imageUrl}}{{champ.image.full}}">
             <div class="info">
               <h4>{{champ.name}}</h4>
               <p>Tags: {{champ.tags.join(', ')}}</p>
