@@ -64,7 +64,7 @@
       <div ng-show="showSuggestions">
         <h3>Recommended Champions For {{role.charAt(0).toUpperCase() + role.slice(1)}} Composition</h3>
 
-        <ul class="filtered-champions-container small-block-grid-12">
+        <ul class="filtered-champions-container small-block-grid-4 medium-block-grid-6 large-block-grid-12">
           <li ng-repeat="champ in filteredChampions | filter: champ.name">
             <img ng-click="addToTeam(champ)" ng-src="{{imageUrl}}{{champ.image.full}}">
           </li>
@@ -72,7 +72,7 @@
       </div>
 
       <h3>All Champions</h3>
-      <ul class="champions-container small-block-grid-12">
+      <ul class="champions-container small-block-grid-4 medium-block-grid-6 large-block-grid-12">
         <li ng-repeat="champ in champions | filter: champ.name">
           <img ng-click="addToTeam(champ)" ng-src="{{imageUrl}}{{champ.image.full}}">
         </li>
