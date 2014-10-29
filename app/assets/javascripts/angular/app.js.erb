@@ -6,8 +6,8 @@ app.config(['$routeProvider', function($routeProvider){
     controller: "TeamBuilderCntrl"
   })
   .when("/videos/new", {
-    templateUrl: "<%= asset_path('angular/templates/videos-new.html') %>"
-
+    templateUrl: "<%= asset_path('angular/templates/videos-new.html') %>",
+    controller: "VideoCntrl"
   })
   .when("/team-builder/stats", {
     templateUrl: "<%= asset_path('angular/templates/team-builder-stats.html') %>",
