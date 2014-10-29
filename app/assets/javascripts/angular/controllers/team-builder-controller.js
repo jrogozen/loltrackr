@@ -1,6 +1,6 @@
 app.controller('TeamBuilderCntrl', ['$scope', '$location', '$timeout', '$routeParams', 'RiotApi', 'Team', function($scope, $location, $timeout, $routeParams, RiotApi, Team) {
 
-    $scope.imageUrl = "http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/";
+    $scope.imageUrl = "https://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/";
 
     $scope.champions = RiotApi.getChampions.query();
 
