@@ -38,12 +38,15 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'rails_12factor', group: :production
+gem 'pry-byebug', group: :development
+
 gem 'angularjs-rails'
 gem 'foundation-rails'
-gem 'pry-byebug', group: :development
 gem 'ng-rails-csrf'
 gem 'figaro'
 gem 'httparty'
 gem 'underscore-rails'
+gem 'fog'
+gem 'carrierwave'
 
-gem 'rails_12factor', group: :production
