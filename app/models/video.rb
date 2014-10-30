@@ -1,3 +1,3 @@
 class Video < ActiveRecord::Base
-  mount_uploader :video_url, VideoUploader
+  acts_as_taggable_on :champions, :players, :teams
 end

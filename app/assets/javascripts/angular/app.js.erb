@@ -22,3 +22,9 @@ app.config(['$routeProvider', function($routeProvider){
   })
 
 }]);
+
+app.filter('stripSpaces', function() {
+  return function(item) {
+    return item.trim();
+  };
+});

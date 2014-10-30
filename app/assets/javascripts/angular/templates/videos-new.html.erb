@@ -5,11 +5,63 @@
 
     <h2>Add Video</h2>
 
-    placeholder for youtube search
+    <div class="row collapse">
+      <div class="small-6 columns">
 
-    <form ng-submit="submitVideo(video)">
-    
-    </form>
+        <form ng-submit="submitVideo(video)">
+          <label>Title
+            <input type="text" ng-model="video.title"/>
+          </label>
+
+          <label>Youtube ID
+            <input type="text" ng-model="video.youtube_id"/>
+          </label>
+
+          <fieldset>
+            <legend>Tags (separate by commas)</legend>
+
+            <label>Players
+              <input type="text" ng-model="video.player_list"/>
+            </label>
+            <label>Teams
+              <input type="text" ng-model="video.team_list"/>
+            </label>
+            <label>Champions
+              <input type="text" ng-model="video.champion_list"/>
+            </label>
+          </fieldset>
+
+          <input type="submit" value="add">
+        </form>
+
+      </div>
+      <div class="small-5 small-offset-1 columns">
+        
+        <form>
+          <label>Search Youtube
+            <input type="text" ng-model="video.search"/>
+          </label>
+        </form>
+
+        <div ng-show="video.title" class="video-preview">
+          <h3>{{video.title}}</h3>
+          <p ng-show="video.youtube_id"><a ng-href="http://youtube.com/watch?v={{video.youtube_id}}">http://youtube.com/watch?v={{video.youtube_id}}</a></p>
+          <img ng-show="video.youtube_id" ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/>
+          <div class="tags-container">
+            <div>
+              <span class="tags" ng-repeat="player in video.player_list.split(',')">{{player | stripSpaces}}</span>
+            </div>
+            <div>
+              <span class="tags" ng-repeat="team in video.team_list.split(',')">{{team | stripSpaces}}</span>
+            </div>
+            <div>
+              <span class="tags" ng-repeat="champion in video.champion_list.split(',')">{{champion | stripSpaces}}</span>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
     
 
   </div>

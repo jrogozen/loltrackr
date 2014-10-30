@@ -47,6 +47,4 @@ gem 'ng-rails-csrf'
 gem 'figaro'
 gem 'httparty'
 gem 'underscore-rails'
-gem 'fog'
-gem 'carrierwave'
-
+gem 'acts-as-taggable-on', '~> 3.4'
