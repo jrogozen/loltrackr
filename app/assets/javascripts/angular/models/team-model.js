@@ -96,4 +96,3 @@ app.factory('Team', ['$resource', '$http', '$timeout', function($resource, $http
     }
 
 }]);
-

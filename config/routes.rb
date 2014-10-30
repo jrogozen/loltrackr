@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "teams/max-attack" => "teams#max_attack"
   get "teams/max-defense" => "teams#max_defense"
 
+  get "categories" => "categories#index"
+
   resources :champions
   resources :teams
   resources :videos

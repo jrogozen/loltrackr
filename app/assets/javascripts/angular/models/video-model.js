@@ -2,12 +2,8 @@ app.factory('Video', ['$resource', '$http', '$timeout', function($resource, $htt
 
     return {
       upload: $resource('videos/', {id: '@id'}, {
-        // maxAttack: {
-        //   isArray: false,
-        //   url: 'teams/max-attack'
-        // }
-      }),
+
+      })
     }
 
 }]);
-
