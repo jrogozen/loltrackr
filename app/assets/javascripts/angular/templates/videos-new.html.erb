@@ -1,8 +1,6 @@
 <div class="row">
   <div class="small-12 columns">
 
-   
-
     <h2>Add Video</h2>
 
     <div class="row collapse">
@@ -36,13 +34,7 @@
 
       </div>
       <div class="small-5 small-offset-1 columns">
-        
-        <form>
-          <label>Search Youtube
-            <input type="text" ng-model="video.search"/>
-          </label>
-        </form>
-<!-- ng-show="video.title" -->
+
         <div class="video-preview">
           <h3>{{video.title}}</h3>
           <p ng-show="video.youtube_id"><a ng-href="http://youtube.com/watch?v={{video.youtube_id}}">http://youtube.com/watch?v={{video.youtube_id}}</a></p>
@@ -62,7 +54,6 @@
       
       </div>
     </div>
-    
 
   </div>
 </div>

@@ -7,15 +7,15 @@ app.config(['$routeProvider', function($routeProvider){
   })
   .when("/videos/new", {
     templateUrl: "<%= asset_path('angular/templates/videos-new.html') %>",
-    controller: "VideoCntrl"
-  })
-  .when("/videos", {
-    templateUrl: "<%= asset_path('angular/templates/videos.html') %>",
-    controller: "TeamStatsCntrl"
+    controller: "NewVideoCntrl"
   })
   .when("/videos/:id", {
     templateUrl: "<%= asset_path('angular/templates/video.html') %>",
-    controller: "TeamStatsCntrl"
+    controller: "ViewVideoCntrl"
+  })
+  .when("/videos", {
+    templateUrl: "<%= asset_path('angular/templates/videos.html') %>",
+    // controller: "VideoCntrl"
   })
   .when("/team-builder/stats", {
     templateUrl: "<%= asset_path('angular/templates/team-builder-stats.html') %>",
@@ -30,3 +30,10 @@ app.config(['$routeProvider', function($routeProvider){
   })
 
 }]);
+
+app.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'https://www.youtube.com/**'
+  ]);
+});

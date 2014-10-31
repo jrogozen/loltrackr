@@ -6,8 +6,6 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', '$routeParams', 'Video'
     return 'https://www.youtube.com/embed/' + videoId + '?rel=0&hd=1&modestbranding=1&showinfo=0';
   };
 
-
   }
-
 
 ]);

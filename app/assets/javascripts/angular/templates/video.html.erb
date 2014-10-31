@@ -1,7 +1,27 @@
 <div class="row">
-  <div class="small-12 columns">
+  <div class="small-12 large-9 columns">
+    <h2>{{video.info.title}}</h2>
     
-    
+    <div class="videoWrapper">
+    <!-- Copy & Pasted from YouTube -->
+    <iframe width="560" height="349" ng-src="{{getIframeSrc(video.info.youtube_id)}}" frameborder="0" allowfullscreen></iframe>
+    </div>
 
+    <div class="tags-container">
+      <ul>
+        <li ng-repeat="player in video.player_list" ng-bind-html="player | playerTrim"></li>
+      </ul>
+      <ul>
+        <li ng-repeat="team in video.team_list" ng-bind-html="team | teamTrim"></li>
+      </ul>
+      <ul>
+        <li ng-repeat="champion in video.champion_list" ng-bind-html="champion | championToIcon"></li>
+      </ul>
+    </div>
+    <p>share link for this view</p>
+    <p>share link for minimalistic view</p>
+  </div>
+  <div class="small-12 large-3 columns">
+    <h2>Related</h2>
   </div>
 </div>
