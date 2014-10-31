@@ -42,20 +42,20 @@
             <input type="text" ng-model="video.search"/>
           </label>
         </form>
-
-        <div ng-show="video.title" class="video-preview">
+<!-- ng-show="video.title" -->
+        <div class="video-preview">
           <h3>{{video.title}}</h3>
           <p ng-show="video.youtube_id"><a ng-href="http://youtube.com/watch?v={{video.youtube_id}}">http://youtube.com/watch?v={{video.youtube_id}}</a></p>
           <img ng-show="video.youtube_id" ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/>
           <div class="tags-container">
+            <ul class="small-block-grid-6">
+              <li ng-repeat="champion in video.champion_list.split(',')" ng-bind-html="champion | championToIcon"></li>
+            </ul>
             <div>
-              <span class="tags" ng-repeat="player in video.player_list.split(',')">{{player | stripSpaces}}</span>
+              <span class="tags" ng-repeat="player in video.player_list.split(',')" ng-bind-html="player | playerTrim"></span>
             </div>
             <div>
-              <span class="tags" ng-repeat="team in video.team_list.split(',')">{{team | stripSpaces}}</span>
-            </div>
-            <div>
-              <span class="tags" ng-repeat="champion in video.champion_list.split(',')">{{champion | stripSpaces}}</span>
+              <span class="tags light" ng-repeat="team in video.team_list.split(',')" ng-bind-html="team | teamTrim"></span>
             </div>
           </div>
         </div>

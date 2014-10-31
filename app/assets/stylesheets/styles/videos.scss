@@ -1,5 +1,18 @@
+.tags-container {
+  div {
+    margin-bottom: 10px;
+  }
+  ul {
+    margin-top: 10px;
+  }
+}
+
 .tags {
-  background: pink;
+  background: $highlight;
+  color: white;
   padding: 3px 5px;
   margin-right: 5px;
+}
+.tags.light {
+  background: $light-highlight;
 }
