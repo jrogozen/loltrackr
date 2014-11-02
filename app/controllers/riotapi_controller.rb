@@ -5,6 +5,11 @@ class RiotapiController < ApplicationController
 
     champions = []
 
+    if response["data"].nil?
+      render json: champions
+      return
+    end
+
     response["data"].each do |champ, data|
       local_champ = Champion.find_by(name: data["name"])
 

@@ -10,8 +10,14 @@ Rails.application.routes.draw do
   get "categories" => "categories#index"
 
   resources :champions
+
   resources :teams
+
   resources :videos
+  get "videos/:id/related/:filter" => "videos#find_related"
+
+  get "search" => "search#show"
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

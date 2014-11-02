@@ -1,25 +1,29 @@
 body {
   font-family: 'Roboto', sans-serif;
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Fjalla One', sans-serif !important;
   }
-  p, a, input {
+  p, input {
     font-family: 'Roboto', sans-serif;
   }
   a {
     color: $link;
-    transition: color ease-in-out 0.5s;
+    // transition: color ease-in-out 0.5s;
     &:hover {
       color: $link;
-      text-decoration: underline;
+      // text-decoration: underline;
     }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
   }
 }
 
 .top, .contact {
   color: white;
   .logo {
-    // color: $logo;
+    font-family: 'Fjalla One', sans-serif !important;
     font-size: 24px;
   }
   a {
@@ -28,6 +32,17 @@ body {
       color: $link;
     }
   }
+}
+
+.tags-container {
+  .tag-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.video-url {
+  font-size: 36px;
 }
 
 

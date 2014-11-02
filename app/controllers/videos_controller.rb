@@ -1,11 +1,13 @@
 class VideosController < ApplicationController
-  before_action :set_video
 
   def index
+    @videos = Video.all.paginate(:page => params[:page], :per_page => 8).order('created_at desc')
     render json: Video.all
   end
 
   def show
+    @video = Video.find(params[:id])
+
     video_object = {}
 
     video_object["info"] = @video
@@ -27,12 +29,24 @@ class VideosController < ApplicationController
     render json: @video
   end
 
+  def find_related
+    @video = Video.find(params[:id])
+
+    if params["filter"] == "champion"
+      # find_related_champions
+      render json: @video.find_related_champions
+    elsif params["filter"] == "player"
+      # find_related_players
+      render json: @video.find_related_players
+    elsif params["filter"] == "team"
+      # find_related_teams
+      render json: @video.find_related_teams
+    else
+      render json: [{}]
+    end
+  end
 
   private
-
-  def set_video
-    @video = Video.find(params[:id])
-  end
 
   def video_params
     params.require(:video).permit(:id, :title, :youtube_id, :champion_list, :player_list, :team_list)

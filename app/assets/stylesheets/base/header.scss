@@ -1,4 +1,6 @@
 .top, .contact {
+  position: relative;
+  z-index: 10;
   background: $top-bar;
   padding: 10px 50px;
   &:after {
@@ -9,9 +11,11 @@
   }
   .logo {
     float: left;
+    margin-right: 20px;
   }
   .menu {
-    float: right;
+    margin-top: 5px;
+    float: left;
     ul {
       list-style: none;
       margin: 0;
@@ -23,7 +27,43 @@
         ul {
           display: none;
         }
+        &:hover {
+          ul {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            display: block;
+            width: 200px;
+            border-radius: 5px;
+            li {
+              margin: 0;
+              padding: 5px 10px;
+              background: $highlight;
+              float: left;
+              width: 100%;
+              &:hover {
+                background: $light-highlight;
+              }
+              a {
+                color: white;
+              }
+            }
+          }
+        }
       }
+    }
+  }
+  .search {
+    float: right;
+    width: 30%;
+    @media only screen and (max-width: 40em) { 
+      width: 100%;
+    }
+    input {
+      margin: 0;
+      width: 100%;
+      float: left;
     }
   }
 }

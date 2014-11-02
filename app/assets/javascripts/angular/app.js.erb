@@ -15,7 +15,7 @@ app.config(['$routeProvider', function($routeProvider){
   })
   .when("/videos", {
     templateUrl: "<%= asset_path('angular/templates/videos.html') %>",
-    // controller: "VideoCntrl"
+    controller: "VideoCntrl"
   })
   .when("/team-builder/stats", {
     templateUrl: "<%= asset_path('angular/templates/team-builder-stats.html') %>",
@@ -25,9 +25,13 @@ app.config(['$routeProvider', function($routeProvider){
     templateUrl: "<%= asset_path('angular/templates/team.html') %>",
     controller: "TeamViewCntrl"
   })
-  .otherwise({
-    redirectTo: "/team-builder"
+  .when("/search", {
+    templateUrl: "<%= asset_path('angular/templates/search.html') %>",
+    controller: "SearchCntrl"
   })
+  // .otherwise({
+  //   redirectTo: "/team-builder"
+  // })
 
 }]);
 

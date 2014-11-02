@@ -7,6 +7,11 @@
   }
 }
 
+.video-url {
+  margin-top: 40px;
+  display: block;
+}
+
 .tags {
   background: $highlight;
   color: white;
@@ -15,4 +20,55 @@
 }
 .tags.light {
   background: $light-highlight;
+}
+
+.video-info .tags-container {
+  ul {
+    margin: 0;
+    list-style: none;
+    float: left;
+    width: 100%;
+    li {
+      float: left;
+      margin-left: 10px;
+      background: $highlight;
+      color: white;
+      padding: 5px 10px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    &.champions {
+      li {
+        background: none;
+        padding: 0;
+      }
+    }
+  }
+  span {
+    display: block;
+  }
+  .tag-title {
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.related-videos {
+  margin: 40px 0;
 }
