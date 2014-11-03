@@ -39,9 +39,9 @@ app.config(['$routeProvider', function($routeProvider){
 
 }]);
 
-// app.config(function($sceDelegateProvider) {
-//   $sceDelegateProvider.resourceUrlWhitelist([
-//     'self',
-//     'https://www.youtube.com/**'
-//   ]);
-// });
+app.config(['$sceDelegateProvider', function($sceDelegateProvider) { 
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'https://www.youtube.com/**'
+  ]);
+}]);
