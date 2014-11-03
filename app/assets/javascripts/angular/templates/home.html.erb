@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="small-12 columns">
+    <input id="search-champions" onfocus="this.placeholder = ''" onblur="this.placeholder = 'browse videos by champion...'" type="text" ng-model="champ.name" placeholder="browse videos by champion..."/>
+
+    <div class="champion-list">
+      <ul class="small-block-grid-4 medium-block-grid-12">
+        <li ng-repeat="champ in champions | filter: champ.name">
+          <img ng-click="find({query: champ.name})" ng-src="{{championImage(champ.image.full)}}">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

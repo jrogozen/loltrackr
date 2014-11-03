@@ -1,8 +1,8 @@
 class VideosController < ApplicationController
 
   def index
-    @videos = Video.all.paginate(:page => params[:page], :per_page => 8).order('created_at desc')
-    render json: Video.all
+    @videos = Video.all.order('created_at desc')
+    render json: @videos
   end
 
   def show
@@ -34,13 +34,13 @@ class VideosController < ApplicationController
 
     if params["filter"] == "champion"
       # find_related_champions
-      render json: @video.find_related_champions.paginate(:page => params[:page], :per_page => 8)
+      render json: @video.find_related_champions.limit(8)
     elsif params["filter"] == "player"
       # find_related_players
-      render json: @video.find_related_players.paginate(:page => params[:page], :per_page => 8)
+      render json: @video.find_related_players.limit(8)
     elsif params["filter"] == "team"
       # find_related_teams
-      render json: @video.find_related_teams.paginate(:page => params[:page], :per_page => 8)
+      render json: @video.find_related_teams.limit(8)
     else
       render json: [{}]
     end
