@@ -3,7 +3,8 @@ app.controller('SearchCntrl', ['$scope', '$location', '$rootScope', '$routeParam
     $scope.find = function(data) {
       Search.fetchSearch.find(data).$promise.then(function(result) {
         $rootScope.searchResults = result
-        $location.path('/videos');
+        $scope.search = '';
+        $location.path('/search');
       });
 
     };
