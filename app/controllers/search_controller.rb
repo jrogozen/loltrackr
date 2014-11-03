@@ -6,7 +6,7 @@ class SearchController < ApplicationController
 
     y = Video.where("title ilike ?", "%#{params['query']}%")
 
-    @videos = (x + y).compact
+    @videos = (x + y).compact.uniq
 
     render json: @videos
   end

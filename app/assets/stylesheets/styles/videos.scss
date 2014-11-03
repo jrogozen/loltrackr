@@ -37,6 +37,9 @@
       &:first-child {
         margin-left: 0;
       }
+      &:hover {
+        background: $light-highlight;
+      }
     }
     &.champions {
       li {
@@ -69,13 +72,17 @@
   height: 100%;
 }
 
-.related-videos {
-  margin: 40px 0;
-}
-
 .video-list {
   h4 {
     height: 64px;
     overflow: hidden;
   }
+}
+
+.highlight {
+  background: $highlight;
+  color: white;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }

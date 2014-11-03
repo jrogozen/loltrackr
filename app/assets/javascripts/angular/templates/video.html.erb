@@ -26,26 +26,30 @@
       </ul>
     </div>
   </div>
-  <div class="related-videos small-12 columns">
-    <div ng-show="relatedPlayer" class="player">
-      <h4>Related Player Videos</h4>
+</div>
+<div class="highlight">
+  <div class="row">
+    <div class="related-videos small-12 columns">
+      <div ng-show="relatedPlayer" class="player">
+        <h4>Related Player Videos</h4>
 
-      <ul class="large-block-grid-4 small-block-grid-1">
-        <li ng-repeat="video in getRelatedByPlayer">
-          <a ng-href="#/videos/{{video.id}}"><h5>{{video.title}}</h5></a>
-          <a ng-href="#/videos/{{video.id}}"><img ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
-        </li>
-      </ul>
-    </div>
-    <div ng-show="relatedChampion" class="champion">
-    <h4>Related Champion Videos</h4>
-      
-      <ul class="large-block-grid-4 small-block-grid-1">
-        <li ng-repeat="video in getRelatedByChampion">
-          <a ng-href="#/videos/{{video.id}}"><h5>{{video.title}}</h5></a>
-          <a ng-href="#/videos/{{video.id}}"><img ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
-        </li>
-      </ul>
+        <ul class="large-block-grid-4 small-block-grid-1">
+          <li ng-repeat="video in getRelatedByPlayer">
+            <a ng-href="#/videos/{{video.id}}"><h5>{{video.title}}</h5></a>
+            <a ng-href="#/videos/{{video.id}}"><img ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
+          </li>
+        </ul>
+      </div>
+      <div ng-show="relatedChampion" class="champion">
+      <h4>Related Champion Videos</h4>
+        
+        <ul class="large-block-grid-4 small-block-grid-1">
+          <li ng-repeat="video in getRelatedByChampion">
+            <a ng-href="#/videos/{{video.id}}"><h5>{{video.title}}</h5></a>
+            <a ng-href="#/videos/{{video.id}}"><img ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
