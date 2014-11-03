@@ -3,7 +3,15 @@ app.factory('RiotApi', ['$resource', '$http', '$timeout', function($resource, $h
 
     });
 
+    var getChampionsOnly = $resource('riotapi/champions-only', {}, {
+
+    });
+
     return {
-      getChampions: getChampions
+      getChampions: getChampions,
+      getChampionsOnly: getChampionsOnly,
+      championImage: function(champImage) {
+        return "https://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/" + champImage;
+      }
     }
 }]);

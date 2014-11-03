@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get "riotapi/champions" => "riotapi#get_champions"
+  get "riotapi/champions-only" => "riotapi#get_riot_champions"
   get "riotapi/role" => "riotapi#get_role"
   get "teams/max-attack" => "teams#max_attack"
   get "teams/max-defense" => "teams#max_defense"
