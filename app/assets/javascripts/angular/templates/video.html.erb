@@ -36,7 +36,7 @@
         <ul class="large-block-grid-4 small-block-grid-1">
           <li ng-repeat="video in getRelatedByPlayer">
             <a ng-href="#/videos/{{video.id}}"><h5>{{video.title}}</h5></a>
-            <a ng-href="#/videos/{{video.id}}"><img ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
+            <a ng-href="#/videos/{{video.id}}"><img class="round" ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
           </li>
         </ul>
       </div>
@@ -46,7 +46,7 @@
         <ul class="large-block-grid-4 small-block-grid-1">
           <li ng-repeat="video in getRelatedByChampion">
             <a ng-href="#/videos/{{video.id}}"><h5>{{video.title}}</h5></a>
-            <a ng-href="#/videos/{{video.id}}"><img ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
+            <a ng-href="#/videos/{{video.id}}"><img class="round" ng-src="http://img.youtube.com/vi/{{video.youtube_id}}/hqdefault.jpg"/></a>
           </li>
         </ul>
       </div>
