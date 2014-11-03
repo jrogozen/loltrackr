@@ -7,9 +7,38 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # [poke, aoe, pick, protect, push]
 
-Category.create({name: "Clip"});
-Category.create({name: "Full Game"});
-Category.create({name: "Interview"});
+a = Video.create({title: 'Faker vs. Ryu', youtube_id: 'ZPCfoCVCx3U'})
+a.champion_list.add(["zed"], parse: true)
+a.player_list.add(["faker","ryu"], parse: true)
+a.team_list.add(["SKT T1"], parse: true)
+a.save
+
+
+b = Video.create({title: "Froggen's Yasuo", youtube_id: 'ygU6FhJ-1GA'})
+b.champion_list.add(["yasuo"], parse: true)
+b.player_list.add(["froggen"], parse: true)
+b.save
+
+c = Video.create({title: "Diamond 1 AP Kog'Maw", youtube_id: '5Q1sJI1eIUI'})
+c.champion_list.add(["kog'maw"], parse:true)
+c.save
+
+d = Video.create({title: "Faker Yasuo", youtube_id: "mSoabkqFCnY"})
+d.champion_list.add(["yasuo"], parse: true)
+d.player_list.add(["faker"], parse: true)
+d.save
+
+e = Video.create({title: "Froggen Anivia vs Katarina", youtube_id: "dNJSpkLe3UY"})
+e.champion_list.add(["anivia", "katarina"], parse: true)
+e.player_list.add(["froggen"], parse: true)
+e.save
+
+f = Video.create({title: "Doublelift Vayne vs Hai Lulu", youtube_id: "0uVIc-V-7gk"})
+f.champion_list.add(["vayne", "lulu"], parse: true)
+f.player_list.add(["hai", "doublelift"], parse: true)
+f.team_list.add(["CLG","C9"], parse: true)
+f.save
+
 
 Champion.create({name: "Aatrox", role: "push"})
 Champion.create({name: "Ahri", role: "pick"})

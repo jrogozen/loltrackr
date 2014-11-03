@@ -29,9 +29,13 @@ app.config(['$routeProvider', function($routeProvider){
     templateUrl: "<%= asset_path('angular/templates/search.html') %>",
     controller: "VideoCntrl"
   })
-  // .otherwise({
-  //   redirectTo: "/team-builder"
-  // })
+  .when("/", {
+    templateUrl: "<%= asset_path('angular/templates/index.html') %>",
+    controller: "Homecntrl"
+  })
+  .otherwise({
+    redirectTo: "/"
+  })
 
 }]);
 

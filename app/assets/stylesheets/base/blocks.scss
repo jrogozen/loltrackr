@@ -18,3 +18,16 @@
     color: white;
   }
 }
+
+.reverse.button, button.reverse {
+  background: $highlight;
+  color: white;
+  &:hover {
+    background: white;
+    color: $highlight;
+  }
+  &:focus {
+    background: white;
+    color: $highlight;
+  }
+}

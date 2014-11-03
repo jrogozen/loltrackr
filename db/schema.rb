@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20141030004431) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "youtube_id"
-    t.integer  "views"
   end
 
 end
