@@ -1,3 +1,19 @@
+.show-video {
+  background: $dark-box;
+  padding: 20px 0;
+}
+
+.video-meta {
+  table {
+    width: 100%;
+  }
+}
+
+.video-info {
+  background: $info-box;
+  padding: 20px;
+}
+
 .tags-container {
   div {
     margin-bottom: 10px;
@@ -82,7 +98,9 @@
 .highlight {
   background: $highlight;
   color: white;
-  padding-top: 20px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding: 20px 0;
+}
+
+.blank {
+  padding: 20px 0;
 }

@@ -1,15 +1,52 @@
-<div class="row">
-  <div class="small-12 large-8 columns">
-    <h2>{{video.info.title}}</h2>
-    
-    <div class="videoWrapper">
-      <iframe width="560" height="349" ng-src="{{getIframeSrc(video.info.youtube_id)}}" frameborder="0" allowfullscreen></iframe>
+<div class="show-video">
+  <div class="row">
+    <div class="small-12 large-12 columns">
+      <h2>{{video.info.title}}</h2>
+      
+      <div class="videoWrapper">
+        <iframe width="560" height="349" ng-src="{{getIframeSrc(video.info.youtube_id)}}" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <a class="button reverse video-url" href="http://loltrackr.com/#/videos/{{video.info.id}}">http://loltrackr.com/#/videos/{{video.info.id}}</a>
+
     </div>
-
-    <a class="button reverse video-url" href="http://loltrackr.com/#/videos/{{video.info.id}}">http://loltrackr.com/#/videos/{{video.info.id}}</a>
-
   </div>
-  <div class="video-info small-12 large-3 large-offset-1 columns">
+</div>
+<div class="box-padding row">
+  <div class="video-meta small-12 large-7 columns">
+    <h2>Play Breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Description</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+        <tr>
+          <td>1</td>
+          <td>WildTurtle</td>
+          <td>Caitlyn kills Vayne</td>
+          <td>1:30</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>WildTurtle</td>
+          <td>Caitlyn kills Vayne</td>
+          <td>1:30</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>WildTurtle</td>
+          <td>Caitlyn kills Vayne</td>
+          <td>1:30</td>
+        </tr>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div class="video-info small-12 large-4 large-offset-1 columns">
     <h2>Info</h2>
     <div class="tags-container">
       <span class="tag-title">Players</span>
@@ -21,16 +58,16 @@
         <li ng-repeat="team in video.team_list" ng-bind-html="team | teamTrim"></li>
       </ul>
       <span class="tag-title">Champions</span>
-      <ul class="small-block-grid-2 champions medium-block-grid-4">
+      <ul class="small-block-grid-4 champions medium-block-grid-8">
         <li ng-repeat="champion in video.champion_list" ng-bind-html="champion | championToIcon"></li>
       </ul>
     </div>
   </div>
 </div>
-<div class="highlight">
-  <div class="row">
-    <div class="related-videos small-12 columns">
-      <div ng-show="relatedPlayer" class="player">
+<div class="related-videos">
+  <div ng-show="relatedPlayer" class="highlight">
+    <div class="row">
+      <div class="player small-12 columns">
         <h4>Related Player Videos</h4>
 
         <ul class="large-block-grid-4 small-block-grid-1">
@@ -40,8 +77,12 @@
           </li>
         </ul>
       </div>
-      <div ng-show="relatedChampion" class="champion">
-      <h4>Related Champion Videos</h4>
+    </div>
+  </div>
+  <div ng-show="relatedChampion" class="blank">
+    <div class="row">
+      <div class="champion small-12 columns">
+        <h4>Related Champion Videos</h4>
         
         <ul class="large-block-grid-4 small-block-grid-1">
           <li ng-repeat="video in getRelatedByChampion">

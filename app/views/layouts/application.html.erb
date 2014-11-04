@@ -14,33 +14,39 @@
 
   <body ng-app="loltrackrApp">
     <header id="header">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="logo">
+            <a ng-href="/#">loltrackr</a>
+          </div>
+        </div>
+      </div>
       <nav class="top">
+        <div class="row">
+          <div class="small-12 columns">
+          <div class="menu">
+            <ul>
+              <li><a ng-href="#/">home</a></li>
+              <li><a ng-href="#/videos/">videos</a>
+                <ul>
+                  <li><a ng-href="#/videos/new/">add new</a></li>
+                </ul>
+              </li>
+              <li><a ng-href="#/team-builder">team builder</a>
+                <ul>
+                  <li><a ng-href="#/team-builder">create team</a></li>
+                  <li><a ng-href="#/team-builder/stats">stats</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-        <div class="logo">
-          <a ng-href="/#">loltrackr</a>
-        </div>
-        
-        <div class="menu">
-          <ul>
-            <li><a ng-href="#/">home</a></li>
-            <li><a ng-href="#/videos/">videos</a>
-              <ul>
-                <li><a ng-href="#/videos/new/">add new</a></li>
-              </ul>
-            </li>
-            <li><a ng-href="#/team-builder">team builder</a>
-              <ul>
-                <li><a ng-href="#/team-builder">create team</a></li>
-                <li><a ng-href="#/team-builder/stats">stats</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <div ng-controller="SearchCntrl" class="search">
-          <form ng-init="search = {}" ng-submit="find(search)">
-            <input ng-model="search.query" type="text" placeholder="search..."/>
-          </form>
+          <div ng-controller="SearchCntrl" class="search">
+            <form ng-init="search = {}" ng-submit="find(search)">
+              <input ng-model="search.query" type="text" placeholder="search..."/>
+            </form>
+          </div>
+          </div>
         </div>
 
       </nav>

@@ -1,7 +1,11 @@
 #main {
-  margin-top: 20px;
-  margin-bottom: 50px;
+  // margin-top: 20px;
+  // margin-bottom: 50px;
   min-height: 800px;
+}
+
+.box-padding {
+  padding: 40px 0;
 }
 
 .button, button {
@@ -34,4 +38,8 @@
 
 .round {
   border-radius: 5px;
+}
+
+.padding {
+  padding: 40px 0;
 }

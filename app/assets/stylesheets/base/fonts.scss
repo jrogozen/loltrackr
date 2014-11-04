@@ -20,16 +20,23 @@ body {
   }
 }
 
-.top, .contact {
-  color: white;
-  .logo {
-    font-family: 'Fjalla One', sans-serif !important;
-    font-size: 24px;
-  }
+.logo {
+  font-family: 'Fjalla One', sans-serif !important;
+  font-size: 48px;
   a {
-    color: white;
+    color: black;
     &:hover {
-      color: $link;
+      color: black;
+    }
+  }
+}
+
+.top, .contact {
+  color: black;
+  a {
+    color: black;
+    &:hover {
+      // color: white;
     }
   }
 }
@@ -72,9 +79,21 @@ body {
   }
 }
 
-.related-videos {
+.highlight {
   h4 {
     color: white;
     text-transform: uppercase;
+  }
+}
+.blank {
+  h4 {
+    text-transform: uppercase;
+    color: $highlight;
+  }
+}
+
+.show-video {
+  h2 {
+    color: white;
   }
 }
