@@ -40,7 +40,9 @@ app.directive('youtube', ['$window', '$q', 'YouTubeLoader', function($window, $q
           time: scope.time
         });
 
-  
+      if (player) {
+        console.log('hey');
+      }
 
         scope.$watch('time', function(newValue, oldValue) {
           if (player && (newValue !== oldValue)) {

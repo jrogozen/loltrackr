@@ -17,7 +17,7 @@
     <h2>Play Breakdown</h2>
     <p><a>Add play</a></p>
 
-    <form ng-submit="addPlay(play)">
+    <form ng-init="play={}" ng-submit="addPlay(play)">
       <div>
         <label>Players</label>
         <input placeholder="enter players separated by commas" ng-model="play.players" type="text"/>
@@ -45,7 +45,7 @@
       </thead>
         <tr ng-repeat="play in plays.plays">
           <td>{{play.id}}</td>
-          <td>{{plays.players.join(', ')}}</td>
+          <td>{{play.players.join(', ')}}</td>
           <td>{{play.description}}</td>
           <td class="time" ng-click="sendTime({minutes: play.minute, seconds: play.second})">{{play.minute}}m {{play.second}}s</td>
         </tr>

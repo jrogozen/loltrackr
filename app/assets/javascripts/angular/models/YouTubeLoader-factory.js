@@ -10,7 +10,6 @@ app.factory('YouTubeLoader', ['$window', '$q', function($window, $q) {
 
     $window.onYouTubeIframeAPIReady = function() {
       deferred.resolve();
-      console.log('hey');
     }
 
     return deferred.promise;

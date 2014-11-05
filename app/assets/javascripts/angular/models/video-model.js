@@ -18,8 +18,10 @@ app.factory('Video', ['$resource', '$http', '$timeout', 'RiotApi', function($res
         play_object = {}
 
         // add player tags
-        var players = _.map(play.players.split(","), function(p) {return p.trim();});
-        play_object.players = players;
+        if (play.players) {
+          var players = _.map(play.players.split(","), function(p) {return p.trim();});
+          play_object.players = players;
+        }
 
         // add description
         var description = play.description;
@@ -30,7 +32,7 @@ app.factory('Video', ['$resource', '$http', '$timeout', 'RiotApi', function($res
 
         console.log(play_object);
 
-        this.play.save({play: play_object, video_id: play.video_id});
+        return this.play.save({play: play_object, video_id: play.video_id});
       },
     }
 

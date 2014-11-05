@@ -7,7 +7,6 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', 'anchorSmoothScroll', '
 
     $scope.videoLoaded = false;
 
-
     $scope.video.$promise.then(function(data) {
       $scope.yt.videoid = data.info.youtube_id;
       $scope.videoLoaded = true;
@@ -48,7 +47,11 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', 'anchorSmoothScroll', '
     $scope.addPlay = function(play) {
       play_object = play
       play_object.video_id = $routeParams.id
-      Video.savePlay(play_object);
+      Video.savePlay(play_object).$promise.then(function() {
+        // update scope by calling resource again
+        $scope.plays = Video.play.query({video_id: $routeParams.id});
+      });
+
     }
 
     $scope.plays = Video.play.query({video_id: $routeParams.id});
