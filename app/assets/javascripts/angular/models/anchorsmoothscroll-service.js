@@ -1,4 +1,4 @@
-app.service('anchorSmoothScroll', function ($document, $window) {
+app.service('anchorSmoothScroll', ['$document', '$window', function ($document, $window) {
 
     var document = $document[0];
     var window = $window;
@@ -89,4 +89,4 @@ app.service('anchorSmoothScroll', function ($document, $window) {
 
     };
 
-});
+}]);
