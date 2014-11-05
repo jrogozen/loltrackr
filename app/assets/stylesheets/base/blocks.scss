@@ -21,6 +21,9 @@
     background: $highlight;
     color: white;
   }
+  &.sm {
+    padding: 10px 15px;
+  }
 }
 
 .reverse.button, button.reverse {

@@ -6,6 +6,11 @@ class RiotApi < ActiveRecord::Base
 
     champions = []
 
+    # local_champs = {}
+    # Champion.all.each do |champ|
+    #   local_champs[champ.name] = champ
+    # end
+
     champion_data.each do |champ, data|
       local_champ = Champion.find_by(name: data["name"])
 

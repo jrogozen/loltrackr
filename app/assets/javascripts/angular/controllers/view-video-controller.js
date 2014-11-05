@@ -1,13 +1,33 @@
-app.controller('ViewVideoCntrl', ['$scope', '$location', '$routeParams', 'Video', function($scope, $location, $routeParams, Video) {
+app.controller('ViewVideoCntrl', ['$scope', '$location', 'anchorSmoothScroll', '$routeParams', 'Video', function($scope, $location, anchorSmoothScroll, $routeParams, Video) {
 
     $scope.video = Video.fetch.get({id: $routeParams.id});
 
     $scope.relatedPlayer = false;
     $scope.relatedChampion = false;
 
-    $scope.getIframeSrc = function(videoId) {
-      return 'https://www.youtube.com/embed/' + videoId + '?rel=0&hd=1&modestbranding=1&showinfo=0';
+    $scope.videoLoaded = false;
+
+
+    $scope.video.$promise.then(function(data) {
+      $scope.yt.videoid = data.info.youtube_id;
+      $scope.videoLoaded = true;
+    });
+
+    $scope.yt = {
+      width: 600, 
+      height: 480,
+      time: 0
     };
+
+    $scope.sendTime = function (time) {
+      var minutes = parseInt(time["minutes"]);
+      var seconds = parseInt(time["seconds"]);
+
+      $scope.yt.time = (minutes * 60) + seconds;
+
+      anchorSmoothScroll.scrollTo('video');
+    };
+
 
     $scope.getRelatedByPlayer = Video.findRelated.get({id: $routeParams.id, filter: 'player'});
 
@@ -24,6 +44,14 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', '$routeParams', 'Video'
         $scope.relatedChampion = true;
       }
     });
+
+    $scope.addPlay = function(play) {
+      play_object = play
+      play_object.video_id = $routeParams.id
+      Video.savePlay(play_object);
+    }
+
+    $scope.plays = Video.play.query({video_id: $routeParams.id});
 
   }
 

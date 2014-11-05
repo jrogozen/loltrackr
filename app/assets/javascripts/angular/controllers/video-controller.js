@@ -4,11 +4,11 @@ app.controller('VideoCntrl', ['$scope', '$rootScope', '$location', '$routeParams
 
     $scope.searchResults = $rootScope.searchResults;
 
-    $scope.youtubeThumb = function(videoId) {
-      if (videoId) {
-        return 'http://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
-      }
-    }
+    // $scope.youtubeThumb = function(videoId) {
+    //   if (videoId) {
+    //     return 'http://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
+    //   }
+    // }
 
   }
 

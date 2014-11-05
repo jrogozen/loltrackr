@@ -104,3 +104,10 @@
 .blank {
   padding: 20px 0;
 }
+
+.time {
+  color: $highlight;
+  &:hover {
+    cursor: pointer;
+  }
+}

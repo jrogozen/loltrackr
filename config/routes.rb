@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :videos
   get "videos/:id/related/:filter" => "videos#find_related"
+  get "videos/:video_id/plays" => "plays#index"
+  post "videos/:video_id/plays" => "plays#create"
 
   get "search" => "search#show"
 

@@ -16,17 +16,6 @@ class RiotapiController < ApplicationController
     render json: champions
   end
 
-  def get_riot_champions
-    response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,info,tags,stats&api_key=' + @riot_key)
-    champions = []
-
-    response["data"].each do |champ, data|
-      champions << data
-    end
-
-    render json: champions
-  end
-
   def get_role
     response = HTTParty.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image,info,tags,stats&api_key=' + @riot_key)
 

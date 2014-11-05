@@ -3,8 +3,8 @@
     <div class="small-12 large-12 columns">
       <h2>{{video.info.title}}</h2>
       
-      <div class="videoWrapper">
-        <iframe width="560" height="349" ng-src="{{getIframeSrc(video.info.youtube_id)}}" frameborder="0" allowfullscreen></iframe>
+      <div ng-if="videoLoaded" id="video" class="videoWrapper">
+        <youtube width="{{yt.width}}" height="{{yt.height}}" videoid="{{yt.videoid}}" time="{{yt.time}}"></youtube>
       </div>
 
       <a class="button reverse video-url" href="http://loltrackr.com/#/videos/{{video.info.id}}">http://loltrackr.com/#/videos/{{video.info.id}}</a>
@@ -15,32 +15,39 @@
 <div class="box-padding row">
   <div class="video-meta small-12 large-7 columns">
     <h2>Play Breakdown</h2>
+    <p><a>Add play</a></p>
+
+    <form ng-submit="addPlay(play)">
+      <div>
+        <label>Players</label>
+        <input placeholder="enter players separated by commas" ng-model="play.players" type="text"/>
+      </div>
+      <div>
+        <label>Description</label>
+        <input ng-model="play.description" type="text"/>
+      </div>
+      <div class="time">
+        <label>Minute</label>
+        <input ng-model="play.minute" type="text"/>
+        <label>Second</label>
+        <input ng-model="play.second" type="text"/>
+      </div>
+      <input type="submit" class="button sm" value="add">
+    </form>
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>Player</th>
+          <th>Players</th>
           <th>Description</th>
-          <th>Time</th>
+          <th>Time <small>m:s</small></th>
         </tr>
       </thead>
-        <tr>
-          <td>1</td>
-          <td>WildTurtle</td>
-          <td>Caitlyn kills Vayne</td>
-          <td>1:30</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>WildTurtle</td>
-          <td>Caitlyn kills Vayne</td>
-          <td>1:30</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>WildTurtle</td>
-          <td>Caitlyn kills Vayne</td>
-          <td>1:30</td>
+        <tr ng-repeat="play in plays.plays">
+          <td>{{play.id}}</td>
+          <td>{{plays.players.join(', ')}}</td>
+          <td>{{play.description}}</td>
+          <td class="time" ng-click="sendTime({minutes: play.minute, seconds: play.second})">{{play.minute}}m {{play.second}}s</td>
         </tr>
       <tbody>
       </tbody>
