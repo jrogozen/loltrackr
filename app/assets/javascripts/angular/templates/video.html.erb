@@ -15,9 +15,9 @@
 <div class="box-padding row">
   <div class="video-meta small-12 large-7 columns">
     <h2>Play Breakdown</h2>
-    <p><a>Add play</a></p>
+    <p><a ng-click="startAddPlay();">Add play</a></p>
 
-    <form ng-init="play={}" ng-submit="addPlay(play)">
+    <form ng-show="playForm" ng-init="play={}" ng-submit="addPlay(play)">
       <div>
         <label>Players</label>
         <input placeholder="enter players separated by commas" ng-model="play.players" type="text"/>
@@ -28,12 +28,13 @@
       </div>
       <div class="time">
         <label>Minute</label>
-        <input ng-model="play.minute" type="text"/>
+        <input ng-model="play.minute" type="number"/>
         <label>Second</label>
-        <input ng-model="play.second" type="text"/>
+        <input ng-model="play.second" type="number"/>
       </div>
       <input type="submit" class="button sm" value="add">
     </form>
+
     <table>
       <thead>
         <tr>

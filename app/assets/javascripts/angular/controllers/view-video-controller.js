@@ -7,6 +7,8 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', 'anchorSmoothScroll', '
 
     $scope.videoLoaded = false;
 
+    $scope.playForm = false;
+
     $scope.video.$promise.then(function(data) {
       $scope.yt.videoid = data.info.youtube_id;
       $scope.videoLoaded = true;
@@ -18,9 +20,17 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', 'anchorSmoothScroll', '
       time: 0
     };
 
+    $scope.startAddPlay = function() {
+      $scope.playForm = true;
+    }
+
     $scope.sendTime = function (time) {
       var minutes = parseInt(time["minutes"]);
       var seconds = parseInt(time["seconds"]);
+
+      if (!minutes) {
+        minutes = 0;
+      }
 
       $scope.yt.time = (minutes * 60) + seconds;
 
@@ -51,7 +61,7 @@ app.controller('ViewVideoCntrl', ['$scope', '$location', 'anchorSmoothScroll', '
         // update scope by calling resource again
         $scope.plays = Video.play.query({video_id: $routeParams.id});
       });
-
+      $scope.playForm = false;
     }
 
     $scope.plays = Video.play.query({video_id: $routeParams.id});
