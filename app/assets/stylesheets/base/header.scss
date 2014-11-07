@@ -2,7 +2,8 @@
   position: relative;
   z-index: 10;
   background: $info-box;
-  padding: 10px 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   &:after {
     content: " ";
     visibility: hidden;

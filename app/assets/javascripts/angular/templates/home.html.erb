@@ -1,13 +1,29 @@
-<div class="row">
-  <div class="small-12 columns">
-    <input id="search-champions" onfocus="this.placeholder = ''" onblur="this.placeholder = 'browse videos by champion...'" type="text" ng-model="champ.name" placeholder="browse videos by champion..."/>
+  <div class="intro">
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="info">
+          <h1>League of Legends Play Tracker</h1>
+          <h3>a community driven database of league of legend plays, categorized by player, champion, and team.</h3>
+          <p><a ng-href="#/videos-new">add videos from youtube</a>, <a ng-href="#/videos">browse all videos</a>, <a ng-href="#/search">search</a>, and tag videos play by play.</p>
+          <div class="arrow"></div>
+        </div>
+        <a target="_blank" href="http://kuroga.deviantart.com/"><%= image_tag("ahri.png", class: "intro-image") %></a>
+      </div>
+    </div>
+  </div>
 
-    <div class="champion-list">
-      <ul class="small-block-grid-4 medium-block-grid-12">
-        <li ng-repeat="champ in champions | filter: champ.name">
-          <img ng-click="find({query: champ.name})" ng-src="{{championImage(champ.image.full)}}">
-        </li>
-      </ul>
+<div class="info-box">
+  <div class="row">
+    <div class="small-12 columns">
+      <input id="search-champions" onfocus="this.placeholder = ''" onblur="this.placeholder = 'browse videos by champion...'" type="text" ng-model="champ.name" placeholder="browse videos by champion..."/>
+
+      <div class="champion-list">
+        <ul class="small-block-grid-6 medium-block-grid-12">
+          <li ng-repeat="champ in champions | filter: champ.name">
+            <img ng-click="find({query: champ.name})" ng-src="{{championImage(champ.image.full)}}">
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

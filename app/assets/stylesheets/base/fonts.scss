@@ -97,3 +97,19 @@ body {
     color: white;
   }
 }
+
+.intro {
+  color: white;
+  a {
+    color: $highlight-bold;
+    &:hover {
+      color: white;
+    }
+  }
+  h1 {
+    color: $highlight-bold;
+  }
+  h3 {
+    color: white;
+  }
+}

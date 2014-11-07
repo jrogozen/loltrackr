@@ -35,7 +35,6 @@ app.factory('Youtube', ['Video', '$route', function(Video, $route) {
     playForm: false
   };
 
-
   var changeTime = function(time) {
     var minutes = parseInt(time["minutes"]);
     var seconds = parseInt(time["seconds"]);

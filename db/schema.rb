@@ -39,11 +39,6 @@ ActiveRecord::Schema.define(version: 20141104143250) do
     t.datetime "updated_at"
   end
 
-  create_table "riot_apis", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
