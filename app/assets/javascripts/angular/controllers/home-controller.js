@@ -7,17 +7,9 @@ app.controller('HomeCntrl', ['$scope', '$rootScope', '$location', '$routeParams'
     }
 
     $scope.find = function(data) {
-      Search.fetchSearch.find(data).$promise.then(function(result) {
-        $rootScope.searchResults = result
-        $scope.search = '';
-
-        if ($location.path() === '/search') {
-          $route.reload();
-        } else {
-          $location.path('/search');
-        }
-      });
-
+      Search.searchQuery(data);
+      $scope.search = {};
+      $location.path('search');
     };
 
   }

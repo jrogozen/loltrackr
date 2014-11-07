@@ -30,8 +30,6 @@ app.factory('Video', ['$resource', '$http', '$timeout', 'RiotApi', function($res
         play_object.minute = play.minute;
         play_object.second = play.second;
 
-        console.log(play_object);
-
         return this.play.save({play: play_object, video_id: play.video_id});
       },
     }

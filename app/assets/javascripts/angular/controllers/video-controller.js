@@ -1,8 +1,8 @@
-app.controller('VideoCntrl', ['$scope', '$rootScope', '$location', '$routeParams', 'Video', function($scope, $rootScope, $location, $routeParams, Video) {
+app.controller('VideoCntrl', ['$scope', '$rootScope', '$location', '$routeParams', 'Video', 'Search', function($scope, $rootScope, $location, $routeParams, Video, Search) {
 
     $scope.videos = Video.fetch.query();
 
-    $scope.searchResults = $rootScope.searchResults;
+    $scope.searchResults = Search.searchResults;
 
     $scope.youtubeThumb = function(videoId) {
       if (videoId) {

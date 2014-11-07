@@ -1,20 +1,9 @@
 class PlaysController < ApplicationController
   def index
-    video_object = {
-      plays: [],
-      video: ""
-    }
+    video = Video.find(params["video_id"])
 
-    @video = Video.find(params["video_id"])
-
-    video_object[:video] = @video
-
-    @video.plays.each do |play|
-      p = play.attributes
-      p["players"] = play.player_list
-      video_object[:plays] << p
-    end
-    
+    video_object = Play.build_object(video)
+  
     render json: video_object
   end
 
