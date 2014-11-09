@@ -31,6 +31,7 @@ GEM
       activerecord (>= 3.2, < 5)
     angularjs-rails (1.3.0)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.7)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -146,6 +147,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   angularjs-rails
+  bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
   figaro
   foundation-rails
