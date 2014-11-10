@@ -7,6 +7,11 @@ class PlaysController < ApplicationController
     render json: video_object
   end
 
+  def show
+    play = Play.find(params["id"])
+    render json: play
+  end
+
   def create
     @video = Video.find(params["video_id"])
     play_object = {}
@@ -18,6 +23,13 @@ class PlaysController < ApplicationController
     @video.plays << p
 
     render json: @video
+  end
+
+  def destroy
+    if is_logged_in?
+      Play.find(params["id"]).destroy
+      render json: { head: 'ok' }
+    end
   end
 
   private

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_user
+  def current_user  
     return User.find_by(id: session[:user_id]) if session[:user_id]
     return nil
   end

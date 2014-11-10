@@ -1,4 +1,4 @@
-app.controller('AdminCntrl', ['$scope', '$rootScope', '$location', '$routeParams', 'User', function($scope, $rootScope, $location, $routeParams, User) {
+app.controller('AdminCntrl', ['$scope', '$rootScope', '$location', '$route', '$routeParams', 'User', 'Video', function($scope, $rootScope, $location, $route, $routeParams, User, Video) {
 
     User.setup();
 
@@ -12,6 +12,20 @@ app.controller('AdminCntrl', ['$scope', '$rootScope', '$location', '$routeParams
     $scope.logOut = function() {
       User.logout();
     }
+
+    $scope.delete = function(video) {
+      video.$delete();
+      $route.reload();
+    }
+
+    $scope.deletePlay = function(play, video) {
+      x = Video.play.get({video_id: video.id, id: play.id}).$promise.then(function(p) {
+        p.$delete();
+        $route.reload();
+      });
+    }
+
+    $scope.videos = Video.fetch.query();
 
   }
 

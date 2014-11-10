@@ -1,4 +1,4 @@
-app.factory('User', ['$resource', '$route', function($resource, $route) {
+app.factory('User', ['$resource', '$route', 'Video', function($resource, $route, Video) {
 
   var userResource = $resource('/user', {}, {
   });

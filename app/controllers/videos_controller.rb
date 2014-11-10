@@ -1,8 +1,8 @@
 class VideosController < ApplicationController
 
   def index
-    @videos = Video.all.order('created_at desc')
-    render json: @videos
+    vids = Video.add_data_to_videos
+    render json: vids
   end
 
   def show
@@ -27,6 +27,13 @@ class VideosController < ApplicationController
 
     @video.save
     render json: @video
+  end
+
+  def destroy
+    if is_logged_in?
+      Video.find(params["id"]).destroy
+      render json: { head: 'ok' }
+    end
   end
 
   def find_related

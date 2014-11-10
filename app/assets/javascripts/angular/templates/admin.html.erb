@@ -1,8 +1,7 @@
 <div class="row">
-  <div class="padding small-12 medium-6 columns">
+  <div class="padding small-12 medium-12 columns">
     <div ng-show="settings.loggedIn">
-      <h2>Welcome, {{currentUser.email}}</h2>
-     <div ng-click="logOut()">log out</div>
+      <h2>Welcome, {{currentUser.email}} <small><span ng-click="logOut()">(log out)</small></h2>
     </div>
     <div ng-hide="settings.loggedIn" class="sign-in">
       <h2>Please login</h2>
@@ -17,6 +16,20 @@
         </div>
         <input type="submit" class="button sm" value="sign in"/>
       </form>
+    </div>
+
+    <div ng-show="settings.loggedIn">
+      <h4>Videos</h4>
+      <ul>
+        <li ng-repeat="video in videos">
+          {{video.title}} <a href ng-click="delete(video)">delete</a>
+          <ul>
+            <li ng-repeat="play in video.plays">
+            {{play.description}}: {{play.minute}}m {{play.second}}s <a href ng-click="deletePlay(play, video)">delete</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
