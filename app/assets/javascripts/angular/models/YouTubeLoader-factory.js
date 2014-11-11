@@ -17,9 +17,7 @@ app.factory('YouTubeLoader', ['$window', '$q', function($window, $q) {
   }
 
   return {    
-
     load: load_youtube()
-
   }
 
 }]);

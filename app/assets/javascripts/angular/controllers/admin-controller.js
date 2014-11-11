@@ -1,7 +1,9 @@
 app.controller('AdminCntrl', ['$scope', '$rootScope', '$location', '$route', '$routeParams', 'User', 'Video', function($scope, $rootScope, $location, $route, $routeParams, User, Video) {
 
+    // check to see if there's a current user
     User.setup();
 
+    // create two way data bindings
     $scope.currentUser = User.models.user
     $scope.settings = User.settings
 
@@ -18,6 +20,7 @@ app.controller('AdminCntrl', ['$scope', '$rootScope', '$location', '$route', '$r
       $route.reload();
     }
 
+    // query database for a specific play/video and delete it
     $scope.deletePlay = function(play, video) {
       x = Video.play.get({video_id: video.id, id: play.id}).$promise.then(function(p) {
         p.$delete();

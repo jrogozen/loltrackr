@@ -1,5 +1,6 @@
 app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', function($resource, $http, $timeout, $route, RiotApi) {
 
+    // object that holds what will later be turned into scope variables in controller
     var models = {};
 
     var fetch = $resource('videos/:id', {id: '@id'}, {
@@ -19,10 +20,12 @@ app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', fun
     })
 
     var setup = function(videoId) {
+      // grab related videos and plays
       models.relatedByPlayer = findRelated.get({id: videoId, filter: 'player'});
       models.relatedByChampion = findRelated.get({id: videoId, filter: 'champion'});
       models.plays = play.query({video_id: videoId});
 
+      // handle display or related video view
       models.relatedByPlayer.$promise.then(function(data){
         settings.relatedPlayer = !!data[0];
       });
@@ -39,7 +42,7 @@ app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', fun
       videoLoaded: false
     }
 
-    /* clean up these two functions */
+    /* clean up following two functions */
     var savePlay = function(p) {
       play_object = {}
 
