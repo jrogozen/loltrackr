@@ -23,6 +23,10 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
     getPlayerData: {
       url: "riotapi/player-champion-stats",
       method: "get"
+    },
+    getPlayer: {
+      url: "riotapi/players",
+      method: "get"
     }
   });
 
@@ -37,12 +41,13 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
       '<param  name="allowNetworking" value="all" />' +
       '<param  name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />' +
       '<param  name="flashvars" value="hostname=www.twitch.tv&channel=' + stream + '&auto_play=true" />' +
-      '</object';
+      '</object>';
   }
 
   var getPlayerStats = function(playerId, champId) {
     stats = fetch.getPlayerData({player_id: playerId, champ_id: champId}).$promise;
     stats.then(function(data) {
+      playerModel.currentPlayer = fetch.getPlayer({id: playerId});
       playerModel.stats = data;
     })
   }
@@ -73,9 +78,6 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
           _.each(team, function(p) {
             champId = matchPlayersToChampions(p.summonerInternalName);
             liveModels.displayTeams[num].push({champ: champId, player: {name: p.summonerName, id: p.summonerId}});
-            // pointer.then(function(data) {
-            //   liveModels.displayTeams[num].push({champ: data, player: {name: p.summonerName, id: p.summonerId}});
-            // });
           })
         });
 

@@ -43,7 +43,35 @@
     </div>
   </div>
   <div class="padding small-6 columns stats-container">
-      <!-- {{playerModel.stats}} -->
-      <div ng-bind-html="playerModel.stats.id | championIdToIcon"></div>
+      <div class="icon" ng-bind-html="playerModel.stats.id | championIdToIcon"></div>
+      <div class="player-stats">
+        <h4>{{playerModel.currentPlayer.name}}</h4>
+      </div>
+      <div class="champ-stats">
+        <table>
+          <thead>
+            <tr>
+              <th>Wins</th>
+              <th>Losses</th>
+              <th>Kills</th>
+              <th>Deaths</th>
+              <th>Minions</th>
+              <th>Pentakills</th>
+              <th>KDA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{playerModel.stats.stats.totalSessionsWon}}</td>
+              <td>{{playerModel.stats.stats.totalSessionsLost}}</td>
+              <td>{{playerModel.stats.stats.totalChampionKills}}</td>
+              <td>{{playerModel.stats.stats.totalDeathsPerSession}}</td>
+              <td>{{playerModel.stats.stats.totalMinionKills}}</td>
+              <td>{{playerModel.stats.stats.totalPentaKills}}</td>
+              <td>{{((playerModel.stats.stats.totalChampionKills + playerModel.stats.stats.totalAssists) / playerModel.stats.stats.totalDeathsPerSession).toFixed(2)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
   </div>
 </div>

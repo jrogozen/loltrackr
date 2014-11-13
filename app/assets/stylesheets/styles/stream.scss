@@ -49,5 +49,12 @@
 }
 
 .stats-container {
-
+  .icon {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 20px;
+  }
+  .player-stats {
+    float: left;
+  }
 }

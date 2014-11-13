@@ -24,6 +24,12 @@ class RiotapiController < ApplicationController
     render json: response
   end
 
+  def player_by_id
+    player_id = params[:id]
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/na/v1.4/summoner/' + player_id + '?api_key=' + @riot_key).values[0]
+    render json: response
+  end
+
   def player_champion_stats
     champ_id = params[:champ_id]
     player_id = params[:player_id]

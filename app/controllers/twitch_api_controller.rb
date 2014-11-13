@@ -1,9 +1,7 @@
 class TwitchApiController < ApplicationController
   def get_stream
     streamer = params["streamer"]
-  
     twitch_response = HTTParty.get('https://api.twitch.tv/kraken/streams/' + streamer)
-  
     render json: twitch_response
   end
 
@@ -55,25 +53,3 @@ class TwitchApiController < ApplicationController
 
   end
 end
-
-
-# Twitch: tsm_wildturtle
-
-# broadcasting --> League of Legends -> WildTurtle / Lol Cat / Username5
-
-# --
-
-# Twitch API -> tsm_wildturtle
-
-# -- if twich no streaming -dont make request
-
-# Third Party Api -> tsm_wildturtle (wildturtle 70%, lolcat 10%, username5 20%);
-
-
-
-
-# # get summoner id (api request) 521955
-
-# # get 
-
-

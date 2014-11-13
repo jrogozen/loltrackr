@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "riotapi/role" => "riotapi#get_role"
   get "riotapi/champion-by-id" => "riotapi#champion_by_id"
   get "riotapi/player-champion-stats" => "riotapi#player_champion_stats"
+  get "riotapi/players" => "riotapi#player_by_id"
 
   get "teams/max-attack" => "teams#max_attack"
   get "teams/max-defense" => "teams#max_defense"
