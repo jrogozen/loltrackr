@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "riotapi/champions" => "riotapi#get_champions"
   get "riotapi/champions-only" => "riotapi#get_riot_champions"
   get "riotapi/role" => "riotapi#get_role"
+  get "riotapi/champion-by-id" => "riotapi#champion_by_id"
   get "teams/max-attack" => "teams#max_attack"
   get "teams/max-defense" => "teams#max_defense"
 
@@ -27,6 +28,10 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy"
   post "login" => "sessions#create"
   get 'user' => "users#show"
+
+  # twitch
+  get "streams" => "twitch_api#get_stream"
+  get "streams/game_data" => "twitch_api#get_game_data"
 
   resources :sessions
   

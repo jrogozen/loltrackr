@@ -1,0 +1,49 @@
+.stream .fa {
+  // font-size: 18px;
+}
+
+.sub-info-container {
+  width: 100%;
+  &:after {
+    content: " ";
+    visibility: hidden;
+    clear: both;
+    display: block;
+  }
+  .status {
+    float: left;
+  }
+  .stats {
+    float: right;
+    text-align: right;
+    font-size: 18px;
+    .fa {
+      margin-left: 10px;
+    }
+  }
+}
+
+.team-container {
+  .team-left, .team-right {
+    float: left;
+    table {
+      margin: 0;
+      border: 0;
+      width: 250px;
+      td.champ {
+        width: 60px;
+        padding: 5px 10px;
+        height: auto;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .team-right {
+    td {
+      text-align: right;
+    }
+  }
+}

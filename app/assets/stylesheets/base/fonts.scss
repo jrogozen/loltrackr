@@ -93,8 +93,11 @@ body {
 }
 
 .show-video {
-  h2 {
+  h2, h4, .stream {
     color: white;
+  }
+  .fa-heart {
+    color: $light-highlight;
   }
 }
 

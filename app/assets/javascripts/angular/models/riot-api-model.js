@@ -4,7 +4,10 @@ app.factory('RiotApi', ['$resource', '$http', '$timeout', function($resource, $h
     });
 
     var getChampionsOnly = $resource('riotapi/champions-only', {}, {
-
+      byId: {
+        method: 'get',
+        url: 'riotapi/champion-by-id'
+      }
     });
 
     return {

@@ -29,6 +29,14 @@ app.config(['$routeProvider', function($routeProvider){
     templateUrl: "<%= asset_path('angular/templates/search.html') %>",
     controller: "VideoCntrl"
   })
+  .when("/streams", {
+    templateUrl: "<%= asset_path('angular/templates/streams.html') %>",
+    controller: "StreamCntrl"
+  })
+  .when("/stream/:streamer", {
+    templateUrl: "<%= asset_path('angular/templates/stream.html') %>",
+    controller: "StreamCntrl"
+  })
   // admin section
   .when("/admin", {
     templateUrl: "<%= asset_path('angular/templates/admin.html') %>",
@@ -47,6 +55,7 @@ app.config(['$routeProvider', function($routeProvider){
 app.config(['$sceDelegateProvider', function($sceDelegateProvider) { 
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
-    'https://www.youtube.com/**'
+    'https://www.youtube.com/**',
+    'https://www.twitch.tv/**'
   ]);
 }]);
