@@ -6,4 +6,10 @@ app.controller('StreamCntrl', ['$scope', '$location', '$route', '$routeParams', 
 
   $scope.liveModels = Stream.liveModels;
 
+  $scope.playerModel = Stream.playerModel;
+
+  $scope.getPlayerStats = function(playerId, champId) {
+    Stream.getPlayerStats(playerId, champId);
+  }
+
 }]);

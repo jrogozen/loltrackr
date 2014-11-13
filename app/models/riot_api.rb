@@ -27,20 +27,22 @@ class RiotApi < ActiveRecord::Base
   end
 
   def self.show_matching_roles(champion_data)
+    selected_champions = []
 
-  selected_champions = []
+    champion_data.each do |champ, data|
 
-  champion_data.each do |champ, data|
+      local_champ = Champion.where('role LIKE?', '%' + params["q"] + '%').find_by(name: data["name"])
 
-    local_champ = Champion.where('role LIKE?', '%' + params["q"] + '%').find_by(name: data["name"])
-
-    if local_champ
-      champion_data[champ]["role"] = local_champ.role.split(";")
-      selected_champions << data
+      if local_champ
+        champion_data[champ]["role"] = local_champ.role.split(";")
+        selected_champions << data
+      end
     end
+
+    selected_champions
   end
 
-  selected_champions
-
+  def self.filter_champion(response, championId)
+    return response["champions"].select {|champ| champ["id"].to_i == championId.to_i}[0]
   end
 end

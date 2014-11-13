@@ -24,4 +24,12 @@ class RiotapiController < ApplicationController
     render json: response
   end
 
+  def player_champion_stats
+    champ_id = params[:champ_id]
+    player_id = params[:player_id]
+    season = params[:season] || 'SEASON4'
+    response = HTTParty.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + player_id + '/ranked?season=' + season + '&api_key=' + @riot_key)
+    stats = RiotApi.filter_champion(response, champ_id)
+    render json: stats
+  end
 end

@@ -16,32 +16,34 @@
 </div>
 </div>
 <div class="row">
-  <div class="padding small-12 columns">
+  <div class="padding small-6 columns">
     <div class="team-container">
       <div class="team-left">
         <table>
           <thead></thead>
           <tbody>
-            <tr ng-repeat="player in liveModels.displayTeams.one">
-              <td class="champ" ng-bind-html="player.champ.key | championToIcon"></td>
-              <td class="player">{{player.player}}</td>
+            <tr ng-click="getPlayerStats(player.player.id, player.champ)" ng-repeat="player in liveModels.displayTeams.one">
+              <td class="champ" ng-bind-html="player.champ | championIdToIcon"></td>
+              <td class="player">{{player.player.name}}</td>
             </tr>
           </tbody>
         </table>
       </div>
-
       <div class="team-right">
         <table>
           <thead></thead>
           <tbody>
-            <tr ng-repeat="player in liveModels.displayTeams.two">
-              <td class="player">{{player.player}}</td>
-              <td class="champ" ng-bind-html="player.champ.key | championToIcon"></td>
+            <tr ng-click="getPlayerStats(player.player.id, player.champ)" ng-repeat="player in liveModels.displayTeams.two">
+              <td class="player">{{player.player.name}}</td>
+              <td class="champ" ng-bind-html="player.champ | championIdToIcon"></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  
+  <div class="padding small-6 columns stats-container">
+      <!-- {{playerModel.stats}} -->
+      <div ng-bind-html="playerModel.stats.id | championIdToIcon"></div>
+  </div>
 </div>

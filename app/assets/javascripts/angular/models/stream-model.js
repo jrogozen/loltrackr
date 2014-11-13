@@ -11,9 +11,17 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
     }
   }
 
+  var playerModel = {
+
+  }
+
   var fetch = $resource('streams/:id', {id: '@id'}, {
     getGameData: {
       url: "streams/game_data",
+      method: "get"
+    },
+    getPlayerData: {
+      url: "riotapi/player-champion-stats",
       method: "get"
     }
   });
@@ -32,6 +40,13 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
       '</object';
   }
 
+  var getPlayerStats = function(playerId, champId) {
+    stats = fetch.getPlayerData({player_id: playerId, champ_id: champId}).$promise;
+    stats.then(function(data) {
+      playerModel.stats = data;
+    })
+  }
+ 
   var setup = function(stream) {
     models.streamInfo = fetch.get({streamer: stream});
     models.player = $sce.trustAsHtml(createPlayer(stream));
@@ -56,10 +71,11 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
 
         _.each(liveModels.teams, function(team, num) {
           _.each(team, function(p) {
-            pointer = matchPlayersToChampions(p.summonerInternalName);
-            pointer.then(function(data) {
-              liveModels.displayTeams[num].push({champ: data, player: p.summonerName});
-            });
+            champId = matchPlayersToChampions(p.summonerInternalName);
+            liveModels.displayTeams[num].push({champ: champId, player: {name: p.summonerName, id: p.summonerId}});
+            // pointer.then(function(data) {
+            //   liveModels.displayTeams[num].push({champ: data, player: {name: p.summonerName, id: p.summonerId}});
+            // });
           })
         });
 
@@ -76,18 +92,16 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
       return p.summonerInternalName === internalName;
     });
 
-    return championIdToName(match[0].championId);
-  }
-
-  var championIdToName = function(champId) {
-    return RiotApi.getChampionsOnly.byId({id: champId}).$promise;
+    return match[0].championId;
   }
 
   return {
     fetch: fetch,
     models: models,
     liveModels: liveModels,
-    setup: setup
+    playerModel: playerModel,
+    setup: setup,
+    getPlayerStats: getPlayerStats
   }
 
 }]);
