@@ -29,6 +29,12 @@ class TwitchApiController < ApplicationController
       },
       "tsm_bjergsen" => {
         "roadtochallenger" => 0
+      },
+      "nightblue3" => {
+        "xxxshowtimexxx" => 0
+      },
+      "scarra" => {
+        "scarra" => 0
       }
     }
 

@@ -2,6 +2,8 @@ app.controller('StreamCntrl', ['$scope', '$location', '$route', '$routeParams', 
     
   Stream.setup($routeParams.streamer);
 
+  $scope.settings = Stream.settings;
+
   $scope.models = Stream.models;
 
   $scope.liveModels = Stream.liveModels;

@@ -11,9 +11,7 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
     }
   }
 
-  var playerModel = {
-
-  }
+  var playerModel = {}
 
   var fetch = $resource('streams/:id', {id: '@id'}, {
     getGameData: {
@@ -31,7 +29,7 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
   });
 
   var settings = {
-
+    gameFound: false
   }
 
   var createPlayer = function(stream) {
@@ -61,6 +59,7 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
 
       if (response.data) {
 
+        settings.gameFound = true;
         liveModels.teams = {};
         liveModels.teams["one"] = response.data.game.teamOne;
         liveModels.teams["two"] = response.data.game.teamTwo;
@@ -70,7 +69,9 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
 
         if (liveModels.displayTeams.one.length > 0) {
           liveModels.displayTeams.one.length = 0;
-        } else if (liveModels.displayTeams.two > 0) {
+        }
+
+        if (liveModels.displayTeams.two > 0) {
           liveModels.displayTeams.two.length = 0;
         }
 
@@ -103,7 +104,8 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
     liveModels: liveModels,
     playerModel: playerModel,
     setup: setup,
-    getPlayerStats: getPlayerStats
+    getPlayerStats: getPlayerStats,
+    settings: settings
   }
 
 }]);

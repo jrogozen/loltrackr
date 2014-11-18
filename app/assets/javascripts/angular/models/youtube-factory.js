@@ -9,6 +9,7 @@ app.factory('Youtube', ['Video', '$route', function(Video, $route) {
   };
 
   var setup = function(videoId) {
+    Video.settings.videoLoaded = false;
     models.video = Video.fetch.get({id: videoId});
    
     models.video.$promise.then(function(data) {
