@@ -1,17 +1,7 @@
-app.controller('StreamCntrl', ['$scope', '$location', '$route', '$routeParams', 'Stream', function($scope, $location, $route, $routeParams, Stream) {
-    
-  Stream.setup($routeParams.streamer);
+app.controller('StreamCntrl', ['$scope', '$location', '$route', '$routeParams', 'Streams', function($scope, $location, $route, $routeParams, Streams) {
 
-  $scope.settings = Stream.settings;
+  Streams.setup();
 
-  $scope.models = Stream.models;
-
-  $scope.liveModels = Stream.liveModels;
-
-  $scope.playerModel = Stream.playerModel;
-
-  $scope.getPlayerStats = function(playerId, champId) {
-    Stream.getPlayerStats(playerId, champId);
-  }
+  $scope.models = Streams.models;
 
 }]);

@@ -25,7 +25,7 @@ app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resou
     getPlayer: {
       url: "riotapi/players",
       method: "get"
-    }
+    },
   });
 
   var settings = {

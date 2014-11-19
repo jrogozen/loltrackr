@@ -1,4 +1,53 @@
 class TwitchApiController < ApplicationController
+
+  def index
+    streams = []
+
+    hash = {
+      "tsm_wildturtle" => {
+        "wildturtle" => 0,
+        "lolcat4" => 0
+      },
+      "imaqtpie" => {
+        "imaqtpie" => 0,
+        "sqwaak" => 0
+      },
+      "phantoml0rd" => {
+        "phantoml0rd" => 0
+      },
+      "mushisgosu" => {
+        "clgdeftsu" => 0
+      },
+      "tsm_dyrus" => {
+        "ultrabaymax76000" => 0,
+        "dyrus" => 0,
+        "1800microwaves" => 0
+      },
+      "tsm_bjergsen" => {
+        "roadtochallenger" => 0
+      },
+      "nightblue3" => {
+        "xxxshowtimexxx" => 0
+      },
+      "scarra" => {
+        "scarra" => 0
+      },
+      "clgdoublelift" => {
+        "doublelift" => 0
+      }
+    }
+
+    hash.each do |streamer, usernames|
+      twitch_response = HTTParty.get('https://api.twitch.tv/kraken/streams/' + streamer)
+      if twitch_response["stream"]
+        streams << twitch_response
+      end
+    end
+
+    render json: streams
+
+  end
+
   def get_stream
     streamer = params["streamer"]
     twitch_response = HTTParty.get('https://api.twitch.tv/kraken/streams/' + streamer)

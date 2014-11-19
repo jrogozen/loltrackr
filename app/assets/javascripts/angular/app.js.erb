@@ -35,7 +35,7 @@ app.config(['$routeProvider', function($routeProvider){
   })
   .when("/stream/:streamer", {
     templateUrl: "<%= asset_path('angular/templates/stream.html') %>",
-    controller: "StreamCntrl"
+    controller: "ViewStreamCntrl"
   })
   // admin section
   .when("/admin", {

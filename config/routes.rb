@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'user' => "users#show"
 
   # twitch
+  get "streams/all" => "twitch_api#index"
   get "streams" => "twitch_api#get_stream"
   get "streams/game_data" => "twitch_api#get_game_data"
 
