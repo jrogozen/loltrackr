@@ -25,7 +25,8 @@ class TwitchApiController < ApplicationController
       },
       "tsm_dyrus" => {
         "ultrabaymax76000" => 0,
-        "dyrus" => 0
+        "dyrus" => 0,
+        "1800microwaves" => 0
       },
       "tsm_bjergsen" => {
         "roadtochallenger" => 0
@@ -35,6 +36,9 @@ class TwitchApiController < ApplicationController
       },
       "scarra" => {
         "scarra" => 0
+      },
+      "clgdoublelift" => {
+        "doublelift" => 0
       }
     }
 
