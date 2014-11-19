@@ -1,6 +1,8 @@
 app.factory('RiotApi', ['$resource', '$http', '$timeout', function($resource, $http, $timeout) {
     var getChampions = $resource('riotapi/champions', {}, {
-
+      query: {
+        isArray: false
+      }
     });
 
     var getChampionsOnly = $resource('riotapi/champions-only', {}, {

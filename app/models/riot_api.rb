@@ -6,16 +6,14 @@ class RiotApi < ActiveRecord::Base
 
     local_champions = Champion.all
 
-    champions = []
-
     champion_data.each do |champ, data|
       local_champions.each do |l_champ, index|
-        champion_data[champ]["role"] = l_champ.role.split(";").map {|x| x.capitalize}
+        if champ == l_champ.name
+          champion_data[champ]["role"] = l_champ.role.split(";").map {|x| x.capitalize}
+        end
       end
-      champions << data
     end
-
-    champions
+    champion_data
   end
 
   def self.only_champions(champion_data)
