@@ -54,16 +54,10 @@
       }
     }
   }
-  .search {
-    float: right;
-    width: 30%;
-    @media only screen and (max-width: 40em) { 
-      width: 100%;
-    }
-    input {
-      margin: 0;
-      width: 100%;
-      float: left;
-    }
-  }
+}
+
+.search {
+  float: right;
+  padding-top: 17px;
+  width: 100%;
 }

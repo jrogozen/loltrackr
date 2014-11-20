@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :teams
 
+  get "videos/latest" => "videos#latest"
+  
   resources :videos
   get "videos/:id/related/:filter" => "videos#find_related"
   get "videos/:video_id/plays" => "plays#index"

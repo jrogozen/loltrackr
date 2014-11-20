@@ -53,6 +53,11 @@ class VideosController < ApplicationController
     end
   end
 
+  def latest
+    @videos = Video.last(5).reverse
+    render json: @videos
+  end
+
   private
 
   def video_params

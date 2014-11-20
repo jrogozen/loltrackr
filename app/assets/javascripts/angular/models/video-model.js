@@ -4,7 +4,11 @@ app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', fun
     var models = {};
 
     var fetch = $resource('videos/:id', {id: '@id'}, {
-
+      latest: {
+        url: "videos/latest",
+        method: "get",
+        isArray: true
+      }
     });
 
     var findRelated = $resource('videos/:id/related/:filter', {id: '@id'}, {
@@ -18,6 +22,16 @@ app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', fun
         isArray: false
       }
     })
+
+    var getLatest = function() {
+      models.latestVideos = fetch.latest();
+    }
+
+    var youtubeThumb = function(videoId) {
+      if (videoId) {
+        return 'http://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
+      }
+    };
 
     var setup = function(videoId) {
       // grab related videos and plays
@@ -33,6 +47,7 @@ app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', fun
       models.relatedByChampion.$promise.then(function(data) {
         settings.relatedChampion = !!data[0];
       });
+
     }
 
     var settings = {
@@ -78,7 +93,9 @@ app.factory('Video', ['$resource', '$http', '$timeout', '$route', 'RiotApi', fun
       models: models,
       findRelated: findRelated,
       addPlay: addPlay,
-      play: play
+      play: play,
+      getLatest: getLatest,
+      youtubeThumb: youtubeThumb
     }
 
 }]);

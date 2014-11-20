@@ -4,10 +4,10 @@
   <div class="padding small-12 columns">
     <div>
       <ul class="video-list small-block-grid-2 medium-block-grid-4">
-          <li ng-repeat="video in videos">
-            <h4><a ng-href="/#/videos/{{video.id}}">{{video.title}}</a></h4>
-            <a ng-href="/#/videos/{{video.id}}"><img class="round" ng-src="{{youtubeThumb(video.youtube_id)}}"/></a>
-          </li>
+        <li ng-repeat="video in videos">
+          <h4><a ng-href="/#/videos/{{video.id}}">{{video.title}}</a></h4>
+          <a ng-href="/#/videos/{{video.id}}"><img class="round" ng-src="{{youtubeThumb(video.youtube_id)}}"/></a>
+        </li>
       </ul>
     </div>
   </div>

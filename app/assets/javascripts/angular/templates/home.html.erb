@@ -1,12 +1,26 @@
 <banner bg="home.jpg" src="http://hdw.eweb4.com/wallpapers/10003/" title="LoLTrackr"></banner>
 
+<div class="latest-container">
+  <div class="row">
+    <div class="latest padding small-12 columns">
+      <h3>Latest Videos</h3>
+      <ul class="medium-block-grid-5 small-block-grid-2">
+        <li ng-repeat="video in models.latestVideos">
+          <a ng-href="/#/videos/{{video.id}}"><img class="round" ng-src="{{youtubeThumb(video.youtube_id)}}"/></a> 
+          <h4><a ng-href="/#/videos/{{video.id}}">{{video.title}}</a></h4>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="info-box">
   <div class="row">
     <div class="small-12 columns">
       <input id="search-champions" onfocus="this.placeholder = ''" onblur="this.placeholder = 'browse videos by champion...'" type="text" ng-model="champ.name" placeholder="browse videos by champion..."/>
 
       <div class="champion-list">
-        <ul class="small-block-grid-6 medium-block-grid-12">
+        <ul class="small-block-grid-4 medium-block-grid-6 large-block-grid-12">
           <li ng-repeat="champ in champions | filter: champ.name">
             <img ng-click="find({query: champ.name})" ng-src="{{championImage(champ.image.full)}}">
           </li>
