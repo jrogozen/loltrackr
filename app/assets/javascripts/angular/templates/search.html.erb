@@ -1,11 +1,18 @@
+<banner bg="search.jpg" src="http://hdw.eweb4.com/wallpapers/1542/" title="Search"></banner>
+
 <div class="row">
-  <div class="video-list small-12 columns">
+  <div class="padding video-list small-12 columns">
     <h2>Search Results</h2>
-    <ul class="small-block-grid-2 medium-block-grid-4">
+    <div ng-hide="searchSettings.results">
+      No results, try searching again.
+    </div>
+    <div ng-show="searchSettings.results">
+      <ul class="small-block-grid-2 medium-block-grid-4">
         <li ng-repeat="video in searchResults">
           <h4><a ng-href="/#/videos/{{video.id}}">{{video.title}}</a></h4>
           <a ng-href="/#/videos/{{video.id}}"><img class="round" ng-src="{{youtubeThumb(video.youtube_id)}}"/></a>
         </li>
-    </ul>
+      </ul>
+    </div>
   </div>
 </div>

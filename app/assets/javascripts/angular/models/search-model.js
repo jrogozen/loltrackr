@@ -2,6 +2,10 @@ app.factory('Search', ['$resource', '$http', '$timeout', function($resource, $ht
 
   var searchResults = [];
 
+  var settings = {
+    results: false
+  }
+
   return {
     fetchSearch: $resource('search/', {}, {
       find: {
@@ -11,13 +15,20 @@ app.factory('Search', ['$resource', '$http', '$timeout', function($resource, $ht
     }),
     searchQuery: function(data) {
       searchResults.length = 0;
+      settings.results = false;
       this.fetchSearch.find(data).$promise.then(function(result) {
-        _.each(result, function(x) {
-          searchResults.push(x);
-        })
+        if (result.length > 0) {
+          _.each(result, function(x) {
+            searchResults.push(x);
+          })
+          settings.results = true;
+        } else {
+          settings.result = false;
+        }
       })
     },
-    searchResults: searchResults
+    searchResults: searchResults,
+    settings: settings
   }
 
 }]);

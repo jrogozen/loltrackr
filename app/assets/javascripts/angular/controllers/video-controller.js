@@ -4,6 +4,8 @@ app.controller('VideoCntrl', ['$scope', '$rootScope', '$location', '$routeParams
 
     $scope.searchResults = Search.searchResults;
 
+    $scope.searchSettings = Search.settings;
+
     $scope.youtubeThumb = function(videoId) {
       if (videoId) {
         return 'http://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';

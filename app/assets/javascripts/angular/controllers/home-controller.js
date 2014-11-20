@@ -16,7 +16,7 @@ app.controller('HomeCntrl', ['$scope', '$rootScope', '$location', '$routeParams'
       // go to search view
       $location.path('search');
     };
-
+    
   }
 
 ]);

@@ -1,9 +1,10 @@
 .top, .contact {
   position: relative;
   z-index: 10;
-  background: $info-box;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background: white;
+  border-top: 2px solid $info-box;
+  padding-top: 15px;
+  padding-bottom: 15px;
   &:after {
     content: " ";
     visibility: hidden;
