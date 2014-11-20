@@ -51,3 +51,62 @@
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
+.intro {
+  position: relative;
+  background-size: cover;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 325px;
+  &:after {
+    content: " ";
+    visibility: hidden;
+    clear: both;
+    display: block;
+  }
+  .info {
+    float: right;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.7);
+    position: relative;
+    transition: background ease-in-out 0.2s;
+    &:hover {
+      background: rgba(0,0,0,1);
+    }
+  }
+  .info h1 {
+    color: white;
+    transition: color ease-in-out .2s;
+    &:hover {
+      color: $highlight;
+    }
+  }
+  .credit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    a {
+      color: white;
+    }
+  }
+}
+
+.intro {
+  &.home {
+    background-image: image-url("home.jpg");
+  }
+  &.videos {
+    background-image: image-url("videos.jpg");
+  }
+  &.streams {
+    background-image: image-url("streams.jpg");
+  }
+  &.search {
+    background-image: image-url("search.jpg");
+  }
+  &.teambuilder {
+    background-image: image-url("teambuilder.jpg");
+  }
+}
