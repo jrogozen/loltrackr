@@ -1,51 +1,8 @@
 class TwitchApiController < ApplicationController
 
   def index
-    streams = []
-
-    hash = {
-      "tsm_wildturtle" => {
-        "wildturtle" => 0,
-        "lolcat4" => 0
-      },
-      "imaqtpie" => {
-        "imaqtpie" => 0,
-        "sqwaak" => 0
-      },
-      "phantoml0rd" => {
-        "phantoml0rd" => 0
-      },
-      "mushisgosu" => {
-        "clgdeftsu" => 0
-      },
-      "tsm_dyrus" => {
-        "ultrabaymax76000" => 0,
-        "dyrus" => 0,
-        "1800microwaves" => 0
-      },
-      "tsm_bjergsen" => {
-        "roadtochallenger" => 0
-      },
-      "nightblue3" => {
-        "xxxshowtimexxx" => 0
-      },
-      "scarra" => {
-        "scarra" => 0
-      },
-      "clgdoublelift" => {
-        "doublelift" => 0
-      }
-    }
-
-    hash.each do |streamer, usernames|
-      twitch_response = HTTParty.get('https://api.twitch.tv/kraken/streams/' + streamer)
-      if twitch_response["stream"]
-        streams << twitch_response
-      end
-    end
-
-    render json: streams
-
+    twitch_response = HTTParty.get('https://api.twitch.tv/kraken/streams?game=league+of+legends') 
+    render json: twitch_response["streams"]
   end
 
   def get_stream
@@ -55,47 +12,15 @@ class TwitchApiController < ApplicationController
   end
 
   def get_game_data
-    streamer = params["streamer"]
+    streamer = params["streamer"].downcase
 
-    hash = {
-      "tsm_wildturtle" => {
-        "wildturtle" => 0,
-        "lolcat4" => 0
-      },
-      "imaqtpie" => {
-        "imaqtpie" => 0,
-        "sqwaak" => 0
-      },
-      "phantoml0rd" => {
-        "phantoml0rd" => 0
-      },
-      "mushisgosu" => {
-        "clgdeftsu" => 0
-      },
-      "tsm_dyrus" => {
-        "ultrabaymax76000" => 0,
-        "dyrus" => 0,
-        "1800microwaves" => 0
-      },
-      "tsm_bjergsen" => {
-        "roadtochallenger" => 0
-      },
-      "nightblue3" => {
-        "xxxshowtimexxx" => 0
-      },
-      "scarra" => {
-        "scarra" => 0
-      },
-      "clgdoublelift" => {
-        "doublelift" => 0
-      }
-    }
+    stream = Streamer.find_by(twitch_handle: streamer)
 
     game = {}
 
-    hash[streamer].each do |x, y|
+    stream.aliases.each do |x, y|
 
-      spectator_response = HTTParty.get("https://spectator-league-of-legends-v1.p.mashape.com/lol/na/v1/spectator/by-name/" + x, 
+      spectator_response = HTTParty.get("https://spectator-league-of-legends-v1.p.mashape.com/lol/na/v1/spectator/by-name/" + x.name, 
         headers:{
           "X-Mashape-Key" => "Qyu8IAMfP1mshl5K8h80pVoC1U3wp1Ua7aJjsnHQzNVI45Wyx7"
         }
@@ -103,6 +28,11 @@ class TwitchApiController < ApplicationController
 
       if !spectator_response["data"]["error"]
         game = spectator_response
+
+        if spectator_response["data"]["game"]["gameState"] != "IN_PROGRESS" || stream.games.length == 0
+          stream.games << Game.create
+        end
+
         break
       end
 

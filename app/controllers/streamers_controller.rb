@@ -1,0 +1,2 @@
+class StreamersController < ApplicationController
+end

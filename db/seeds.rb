@@ -13,7 +13,6 @@ a.player_list.add(["faker","ryu"], parse: true)
 a.team_list.add(["SKT T1"], parse: true)
 a.save
 
-
 b = Video.create({title: "Froggen's Yasuo", youtube_id: 'ygU6FhJ-1GA'})
 b.champion_list.add(["yasuo"], parse: true)
 b.player_list.add(["froggen"], parse: true)
@@ -39,6 +38,47 @@ f.player_list.add(["hai", "doublelift"], parse: true)
 f.team_list.add(["CLG","C9"], parse: true)
 f.save
 
+g = Streamer.create({twitch_handle: "tsm_wildturtle"})
+g.aliases << Alias.create({name: "wildturtle"})
+g.aliases << Alias.create({name: "lolcat4"})
+g.save
+
+h = Streamer.create({twitch_handle: "imaqtpie"})
+h.aliases << Alias.create({name: "imaqtpie"})
+h.aliases << Alias.create({name: "sqwaak"})
+h.save
+
+i = Streamer.create({twitch_handle: "phantoml0rd"})
+i.aliases << Alias.create({name: "phantoml0rd"})
+i.save
+
+j = Streamer.create({twitch_handle: "mushisgosu"})
+j.aliases << Alias.create({name: "clgdeftsu"})
+j.save
+
+k = Streamer.create({twitch_handle: "tsm_dyrus"})
+k.aliases << Alias.create({name: "ultrabaymax76000"})
+k.aliases << Alias.create({name: "1800microwaves"})
+k.aliases << Alias.create({name: "dyrus"})
+k.save
+
+l = Streamer.create({twitch_handle: "tsm_bjergsen"})
+l.aliases << Alias.create({name: "roadtochallenger"})
+l.aliases << Alias.create({name: "bjergsen"})
+l.save
+
+m = Streamer.create({twitch_handle: "scarra"})
+m.aliases << Alias.create({name: "scarra"})
+m.save
+
+n = Streamer.create({twitch_handle: "clgdoublelift"})
+n.aliases << Alias.create({name: "doublelift"})
+n.aliases << Alias.create({name: "pengyiliang"})
+n.save
+
+o = Streamer.create({twitch_handle: "curse_piglet"})
+o.aliases << Alias.create({name: "crspiglet"})
+o.save
 
 Champion.create({name: "Aatrox", role: "push"})
 Champion.create({name: "Ahri", role: "pick"})

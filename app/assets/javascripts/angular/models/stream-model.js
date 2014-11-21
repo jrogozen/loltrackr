@@ -1,4 +1,4 @@
-app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', function($resource, $route, $sce, RiotApi) {
+app.factory('Stream', ['$resource', '$route', '$sce', 'RiotApi', 'Game', function($resource, $route, $sce, RiotApi, Game) {
 
   var models = {
     gameData: {}

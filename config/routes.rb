@@ -40,6 +40,10 @@ Rails.application.routes.draw do
   get "streams" => "twitch_api#get_stream"
   get "streams/game_data" => "twitch_api#get_game_data"
 
+  # streamer
+  get "streams/:streamer/games/last" => "games#latest"
+  post "streams/:streamer/games" => "games#add"
+
   resources :sessions
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -24,6 +24,20 @@
 }
 
 .team-container {
+  table {
+    tr {
+      &:hover {
+        background: $highlight;
+        cursor: pointer;
+        td {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.team-container {
   .team-left, .team-right {
     float: left;
     table {
@@ -56,5 +70,22 @@
   }
   .player-stats {
     float: left;
+  }
+  table {
+    width: 100%;
+  }
+}
+
+.vote-container {
+  .team-one, .team-two {
+    float: left;
+    // width: 50%;
+    height: 20px;
+  }
+  .team-one {
+    background: purple;
+  }
+  .team-two {
+    background: orange;
   }
 }

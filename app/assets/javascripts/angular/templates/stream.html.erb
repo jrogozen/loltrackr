@@ -19,8 +19,10 @@
   <div class="padding small-6 columns">
     <div class="team-container">
       <div class="team-left">
+        <h4>Team One</h4>
         <table>
-          <thead></thead>
+          <thead>
+          </thead>
           <tbody>
             <tr ng-click="getPlayerStats(player.player.id, player.champ)" ng-repeat="player in liveModels.displayTeams.one">
               <td class="champ" ng-bind-html="player.champ | championIdToIcon"></td>
@@ -30,8 +32,10 @@
         </table>
       </div>
       <div class="team-right">
+        <h4>Team Two</h4>
         <table>
-          <thead></thead>
+          <thead>
+          </thead>
           <tbody>
             <tr ng-click="getPlayerStats(player.player.id, player.champ)" ng-repeat="player in liveModels.displayTeams.two">
               <td class="player">{{player.player.name}}</td>
@@ -72,6 +76,11 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="vote-container">
+        <h3>Which team will win?</h3>
+        <div ng-click="addVote('team_one')" style="width: {{(gameModels.game.team_one / (gameModels.game.team_one + gameModels.game.team_two)) * 100}}%" class="team-one">{{(gameModels.game.team_one / (gameModels.game.team_one + gameModels.game.team_two)) * 100}}%</div>
+        <div ng-click="addVote('team_two')" style="width: {{(gameModels.game.team_two / (gameModels.game.team_one + gameModels.game.team_two)) * 100}}%" class="team-two">{{(gameModels.game.team_two / (gameModels.game.team_one + gameModels.game.team_two)) * 100}}%</div>
       </div>
   </div>
 </div>
