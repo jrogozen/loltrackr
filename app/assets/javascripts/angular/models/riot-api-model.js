@@ -16,7 +16,7 @@ app.factory('RiotApi', ['$resource', '$http', '$timeout', function($resource, $h
       getChampions: getChampions,
       getChampionsOnly: getChampionsOnly,
       championImage: function(champImage) {
-        return "https://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/" + champImage;
+        return "https://ddragon.leagueoflegends.com/cdn/4.20.1/img/champion/" + champImage;
       }
     }
 }]);
